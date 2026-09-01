@@ -1,0 +1,17 @@
+[Unit]
+Description=OMG - One Meaningful Game
+After=local-fs.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash /boot/omg/bin/run.sh
+Restart=no
+
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+
+[Install]
+WantedBy=multi-user.target

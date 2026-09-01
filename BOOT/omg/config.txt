@@ -1,0 +1,2 @@
+install_collection=collection-name
+enable_logging=false
