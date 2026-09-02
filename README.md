@@ -18,7 +18,7 @@ You create your own One Meaningful Game collection by choosing a MAME ROM of you
 
 ### Build your collection
 
-A collection is a folder containing the game files.
+A collection is a folder containing the game files. You can create as many collections as you like, but only one can be installed at a time.
 
 1. Download the content of this project.
 
