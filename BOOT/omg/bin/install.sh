@@ -329,6 +329,7 @@ sed -i \
     -e '/^[[:space:]]*cache_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
+    -e '/^[[:space:]]*notification_show_remap_load[[:space:]]*=/d' \
     "$RETROARCH_CONFIG_DEST"
 
 # Add OMG directory definitions and UI settings.
@@ -347,12 +348,9 @@ cache_directory = "${CONFIG_DIR}/cache"
 # ------------------------------------------------------------
 # OMG UI
 # ------------------------------------------------------------
-
-# Hide date/time in RetroArch menu
 menu_timedate_enable = "false"
-
-# Show battery level in RetroArch menu
 menu_battery_level_enable = "true"
+notification_show_remap_load = "false"
 EOF
 
 log "RetroArch OMG directories configured:"
