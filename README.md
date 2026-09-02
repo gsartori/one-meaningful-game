@@ -60,7 +60,7 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
    ============================================================
 ```
 
-4. Copy `EASYROMS/omg-collection/my-collection` to the `EASYROMS` partition.
+4. Copy `EASYROMS/omg-collection/` to the `EASYROMS` partition.
 5. Reboot the console
 
 ### Have Fun :)
