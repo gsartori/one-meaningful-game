@@ -38,6 +38,8 @@ A collection is a folder containing the game files.
 
 ### Install
 
+DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. INSTALL IT ON A FRESH DARKOS INSTALLATION. IT WILL NOT WORK ON AN EXISTING DARKOS SD CARD.
+
 **ATTENTION PLEASE: The installation will configure your dArkOS to run only One Meaningful Game. Once the installation process has been completed, you will not be able to easily revert the installation.**
 
 1. [Download the latest release of dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases) and create an SD card for it [following the instructions](https://github.com/southoz/dArkOSRE-R36/wiki/Firmware-Installation).
