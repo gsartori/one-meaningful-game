@@ -336,10 +336,10 @@ cache_directory = "${CONFIG_DIR}/cache"
 # ------------------------------------------------------------
 
 # Hide date/time in RetroArch menu
-menu_show_time = "false"
+menu_timedate_enable = "false"
 
 # Show battery level in RetroArch menu
-menu_show_battery_level = "true"
+menu_battery_level_enable = "true"
 EOF
 
 # ------------------------------------------------------------
