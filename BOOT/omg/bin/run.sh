@@ -439,7 +439,7 @@ ROM=""
 # global random rotation
 # ------------------------------------------------------------
 if [ $((BOOT_COUNT % 2)) -eq 0 ]; then
-    log "Third boot - selecting next ROM from global random rotation."
+    log "Alternative boot - Selecting next ROM from global random rotation."
 
     if ! select_random_rotation_rom; then
         log "Random rotation unavailable."

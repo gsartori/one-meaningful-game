@@ -45,9 +45,6 @@ ROM_DIR="${OMG_DIR}/roms"
 # Global random rotation
 RANDOM_INDEX_FILE="${OMG_DIR}/omg-random-index"
 
-# Logo
-OMG_LOGO="${OMG_DIR}/logo.bmp"
-
 # Installation state
 INSTALLED_FLAG="${OMG_DIR}/omg-installed"
 
@@ -188,23 +185,12 @@ else
 fi
 
 # ------------------------------------------------------------
-# Install OMG logo
-# ------------------------------------------------------------
-log "Installing OMG logo:"
-log "$SOURCE_LOGO -> $OMG_LOGO"
-
-if ! cp -f "$SOURCE_LOGO" "$OMG_LOGO"; then
-    error "Unable to install OMG logo."
-    exit 1
-fi
-
-# ------------------------------------------------------------
 # Install boot logo
 # ------------------------------------------------------------
 log "Installing OMG boot logo:"
-log "$OMG_LOGO -> $LOGO"
+log "$SOURCE_LOGO -> $LOGO"
 
-if ! cp -f "$OMG_LOGO" "$LOGO"; then
+if ! cp -f "$SOURCE_LOGO" "$LOGO"; then
     error "Unable to install boot logo."
     exit 1
 fi
@@ -524,8 +510,8 @@ log "$ROM_DIR/mame"
 log "Global random index:"
 log "$RANDOM_INDEX_FILE"
 
-log "Logo:"
-log "$OMG_LOGO"
+log "Boot logo:"
+log "$LOGO"
 
 log "RetroArch config:"
 log "$RETROARCH_CONFIG_DEST"
