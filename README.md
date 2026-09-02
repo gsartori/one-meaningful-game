@@ -46,7 +46,7 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
 
 2. Before running dArkOSRE for the first time, copy the contents of the `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `firstboot.sh` file.
 
-3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Collection. You should see this message on the screen:
+3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Game. You should see this message on the screen:
 
 ```text
    ============================================================
