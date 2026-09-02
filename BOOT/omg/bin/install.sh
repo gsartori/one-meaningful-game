@@ -107,7 +107,7 @@ log "RANDOM_INDEX_FILE=$RANDOM_INDEX_FILE"
 # ------------------------------------------------------------
 # Get collection to install
 # ------------------------------------------------------------
-COLLECTION_NAME="${OMG_CONFIG_VALUES[install_collection]}"
+COLLECTION_NAME="${OMG_CONFIG_VALUES[install_collection]:-}"
 
 if [ -z "$COLLECTION_NAME" ]; then
     error "install_collection is not configured."
@@ -342,17 +342,6 @@ menu_timedate_enable = "false"
 menu_battery_level_enable = "true"
 EOF
 
-# ------------------------------------------------------------
-# OMG directories
-# ------------------------------------------------------------
-
-savefile_directory = "${CONFIG_DIR}/saves"
-savestate_directory = "${CONFIG_DIR}/states"
-system_directory = "${CONFIG_DIR}/system"
-input_remap_directory = "${CONFIG_DIR}/remaps"
-cache_directory = "${CONFIG_DIR}/cache"
-EOF
-
 log "RetroArch OMG directories configured:"
 log "Save files: ${CONFIG_DIR}/saves"
 log "Save states: ${CONFIG_DIR}/states"
@@ -466,11 +455,8 @@ fi
 # Permissions
 # ------------------------------------------------------------
 chmod +x "$PAUSE_SCRIPT"
-chmod +x "$PAUSE_BACKUP"
 
 log "pause.sh successfully replaced."
-log "Original pause.sh backup:"
-log "$PAUSE_BACKUP"
 
 # ------------------------------------------------------------
 # Installation flag
