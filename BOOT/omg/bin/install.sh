@@ -314,8 +314,8 @@ sed -i \
     -e '/^[[:space:]]*system_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*input_remap_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*cache_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*menu_show_time[[:space:]]*=/d' \
-    -e '/^[[:space:]]*menu_show_battery_level[[:space:]]*=/d' \
+    -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
+    -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
     "$RETROARCH_CONFIG_DEST"
 
 # Add OMG directory definitions and UI settings.
