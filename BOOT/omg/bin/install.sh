@@ -312,7 +312,7 @@ sed -i \
     -e '/^[[:space:]]*savefile_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*savestate_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*system_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*input_remap_directory[[:space:]]*=/d' \
+    -e '/^[[:space:]]*input_remapping_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*cache_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
@@ -328,7 +328,7 @@ cat >> "$RETROARCH_CONFIG_DEST" <<EOF
 savefile_directory = "${CONFIG_DIR}/saves"
 savestate_directory = "${CONFIG_DIR}/states"
 system_directory = "${CONFIG_DIR}/system"
-input_remap_directory = "${CONFIG_DIR}/remaps"
+input_remapping_directory = "${CONFIG_DIR}/remaps"
 cache_directory = "${CONFIG_DIR}/cache"
 
 # ------------------------------------------------------------
