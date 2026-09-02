@@ -76,6 +76,19 @@ source "${OMG_BOOT_DIR}/bin/logging.sh"
 init_logging "INSTALL"
 
 # ------------------------------------------------------------
+# Useful functions
+# ------------------------------------------------------------
+copy_folder()
+{
+    local source="$1"
+    local destination="$2"
+
+    rsync -a \
+        --exclude='.*' \
+        "$source/" "$destination/"
+}
+
+# ------------------------------------------------------------
 # Timing
 # ------------------------------------------------------------
 START_TIME=$(date +%s%3N)
@@ -390,6 +403,24 @@ if grep -q '^core_options_path' "$RETROARCH_CONFIG_DEST"; then
 else
     echo "core_options_path = \"$RETROARCH_CORE_OPTIONS\"" \
         >> "$RETROARCH_CONFIG_DEST"
+fi
+
+# ------------------------------------------------------------
+# Copy custom OMG configuration
+# ------------------------------------------------------------
+OMG_BOOT_CONFIG_DIR="${OMG_BOOT_DIR}/config"
+
+log "Installing custom OMG configuration files."
+
+if [ -d "$OMG_BOOT_CONFIG_DIR" ]; then
+    log "Copying custom configuration:"
+    log "$OMG_BOOT_CONFIG_DIR -> $CONFIG_DIR"
+
+    copy_folder "$OMG_BOOT_CONFIG_DIR" "$CONFIG_DIR"
+
+else
+    log "No custom OMG configuration directory found:"
+    log "$OMG_BOOT_CONFIG_DIR"
 fi
 
 # ------------------------------------------------------------
