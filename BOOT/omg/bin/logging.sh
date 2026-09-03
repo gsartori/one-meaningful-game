@@ -37,9 +37,10 @@ init_logging()
 {
     LOG_CONTEXT="$1"
 
+    mkdir -p "$LOG_DIR"
+    touch "$LOG_FILE" 2>/dev/null || true
+
     if [ "${OMG_CONFIG_VALUES[enable_logging]:-false}" = "true" ]; then
-        mkdir -p "$LOG_DIR"
-        touch "$LOG_FILE" 2>/dev/null || true
         LOG_ENABLED=true
     else
         LOG_ENABLED=false

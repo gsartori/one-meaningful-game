@@ -45,9 +45,6 @@ ROM_DIR="${OMG_DIR}/roms"
 # Global random rotation
 RANDOM_INDEX_FILE="${OMG_DIR}/omg-random-index"
 
-# Logo
-OMG_LOGO="${OMG_DIR}/logo.bmp"
-
 # Installation state
 INSTALLED_FLAG="${OMG_DIR}/omg-installed"
 
@@ -74,6 +71,19 @@ load_omg_config || exit 1
 # ------------------------------------------------------------
 source "${OMG_BOOT_DIR}/bin/logging.sh"
 init_logging "INSTALL"
+
+# ------------------------------------------------------------
+# Useful functions
+# ------------------------------------------------------------
+copy_folder()
+{
+    local source="$1"
+    local destination="$2"
+
+    rsync -a \
+        --exclude='.*' \
+        "$source/" "$destination/"
+}
 
 # ------------------------------------------------------------
 # Timing
@@ -107,7 +117,7 @@ log "RANDOM_INDEX_FILE=$RANDOM_INDEX_FILE"
 # ------------------------------------------------------------
 # Get collection to install
 # ------------------------------------------------------------
-COLLECTION_NAME="${OMG_CONFIG_VALUES[install_collection]}"
+COLLECTION_NAME="${OMG_CONFIG_VALUES[install_collection]:-}"
 
 if [ -z "$COLLECTION_NAME" ]; then
     error "install_collection is not configured."
@@ -175,23 +185,12 @@ else
 fi
 
 # ------------------------------------------------------------
-# Install OMG logo
-# ------------------------------------------------------------
-log "Installing OMG logo:"
-log "$SOURCE_LOGO -> $OMG_LOGO"
-
-if ! cp -f "$SOURCE_LOGO" "$OMG_LOGO"; then
-    error "Unable to install OMG logo."
-    exit 1
-fi
-
-# ------------------------------------------------------------
 # Install boot logo
 # ------------------------------------------------------------
 log "Installing OMG boot logo:"
-log "$OMG_LOGO -> $LOGO"
+log "$SOURCE_LOGO -> $LOGO"
 
-if ! cp -f "$OMG_LOGO" "$LOGO"; then
+if ! cp -f "$SOURCE_LOGO" "$LOGO"; then
     error "Unable to install boot logo."
     exit 1
 fi
@@ -312,10 +311,11 @@ sed -i \
     -e '/^[[:space:]]*savefile_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*savestate_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*system_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*input_remap_directory[[:space:]]*=/d' \
+    -e '/^[[:space:]]*input_remapping_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*cache_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*menu_show_time[[:space:]]*=/d' \
-    -e '/^[[:space:]]*menu_show_battery_level[[:space:]]*=/d' \
+    -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
+    -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
+    -e '/^[[:space:]]*video_font_enable[[:space:]]*=/d' \
     "$RETROARCH_CONFIG_DEST"
 
 # Add OMG directory definitions and UI settings.
@@ -328,29 +328,15 @@ cat >> "$RETROARCH_CONFIG_DEST" <<EOF
 savefile_directory = "${CONFIG_DIR}/saves"
 savestate_directory = "${CONFIG_DIR}/states"
 system_directory = "${CONFIG_DIR}/system"
-input_remap_directory = "${CONFIG_DIR}/remaps"
+input_remapping_directory = "${CONFIG_DIR}/remaps"
 cache_directory = "${CONFIG_DIR}/cache"
 
 # ------------------------------------------------------------
 # OMG UI
 # ------------------------------------------------------------
-
-# Hide date/time in RetroArch menu
-menu_show_time = "false"
-
-# Show battery level in RetroArch menu
-menu_show_battery_level = "true"
-EOF
-
-# ------------------------------------------------------------
-# OMG directories
-# ------------------------------------------------------------
-
-savefile_directory = "${CONFIG_DIR}/saves"
-savestate_directory = "${CONFIG_DIR}/states"
-system_directory = "${CONFIG_DIR}/system"
-input_remap_directory = "${CONFIG_DIR}/remaps"
-cache_directory = "${CONFIG_DIR}/cache"
+menu_timedate_enable = "false"
+menu_battery_level_enable = "true"
+video_font_enable = "false"
 EOF
 
 log "RetroArch OMG directories configured:"
@@ -401,6 +387,24 @@ if grep -q '^core_options_path' "$RETROARCH_CONFIG_DEST"; then
 else
     echo "core_options_path = \"$RETROARCH_CORE_OPTIONS\"" \
         >> "$RETROARCH_CONFIG_DEST"
+fi
+
+# ------------------------------------------------------------
+# Copy custom OMG configuration
+# ------------------------------------------------------------
+OMG_BOOT_CONFIG_DIR="${OMG_BOOT_DIR}/config"
+
+log "Installing custom OMG configuration files."
+
+if [ -d "$OMG_BOOT_CONFIG_DIR" ]; then
+    log "Copying custom configuration:"
+    log "$OMG_BOOT_CONFIG_DIR -> $CONFIG_DIR"
+
+    copy_folder "$OMG_BOOT_CONFIG_DIR" "$CONFIG_DIR"
+
+else
+    log "No custom OMG configuration directory found:"
+    log "$OMG_BOOT_CONFIG_DIR"
 fi
 
 # ------------------------------------------------------------
@@ -466,11 +470,8 @@ fi
 # Permissions
 # ------------------------------------------------------------
 chmod +x "$PAUSE_SCRIPT"
-chmod +x "$PAUSE_BACKUP"
 
 log "pause.sh successfully replaced."
-log "Original pause.sh backup:"
-log "$PAUSE_BACKUP"
 
 # ------------------------------------------------------------
 # Installation flag
@@ -509,8 +510,8 @@ log "$ROM_DIR/mame"
 log "Global random index:"
 log "$RANDOM_INDEX_FILE"
 
-log "Logo:"
-log "$OMG_LOGO"
+log "Boot logo:"
+log "$LOGO"
 
 log "RetroArch config:"
 log "$RETROARCH_CONFIG_DEST"

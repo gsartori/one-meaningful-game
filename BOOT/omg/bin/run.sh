@@ -439,7 +439,7 @@ ROM=""
 # global random rotation
 # ------------------------------------------------------------
 if [ $((BOOT_COUNT % 2)) -eq 0 ]; then
-    log "Third boot - selecting next ROM from global random rotation."
+    log "Alternative boot - Selecting next ROM from global random rotation."
 
     if ! select_random_rotation_rom; then
         log "Random rotation unavailable."
@@ -543,16 +543,28 @@ TERM=linux
 
 log "Launching RetroArch."
 
-HOME=/home/ark \
-USER=root \
-LOGNAME=root \
-TERM=linux \
-"$RETROARCH" \
-    --verbose \
-    -c "$RETROARCH_CONFIG" \
-    -L "$CORE" \
-    "$ROM" \
-    >> "$LOG_FILE" 2>&1
+if [ "$LOG_ENABLED" = "true" ]; then
+    HOME=/home/ark \
+    USER=root \
+    LOGNAME=root \
+    TERM=linux \
+    "$RETROARCH" \
+        --verbose \
+        -c "$RETROARCH_CONFIG" \
+        -L "$CORE" \
+        "$ROM" \
+        >> "$LOG_FILE" 2>&1
+else
+    HOME=/home/ark \
+    USER=root \
+    LOGNAME=root \
+    TERM=linux \
+    "$RETROARCH" \
+        -c "$RETROARCH_CONFIG" \
+        -L "$CORE" \
+        "$ROM" \
+        > /dev/null 2>&1
+fi
 
 RETROARCH_EXIT=$?
 
