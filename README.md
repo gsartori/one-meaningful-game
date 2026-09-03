@@ -8,11 +8,11 @@ A video game is not just a product. It is art.
 
 This project is a gaming meditation.
 
-<center>
+<div align="center">
 
    ![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
 
-</center>
+</div>
 
 ### How it works
 
