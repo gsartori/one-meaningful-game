@@ -8,7 +8,7 @@ A video game is not just a product. It is art.
 
 <div align="center">
 
-   ## This project is a gaming meditation.
+   ### This project is a gaming meditation.
    ![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
 
 </div>
