@@ -52,7 +52,7 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
 
 2. Before running dArkOSRE for the first time, copy the contents of the `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `firstboot.sh` file.
 
-3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Game. You should see this message on the screen:
+3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Game. It will reboot the console a couple of times then you should see this message or a frozen blank screen:
 
 ```text
    ============================================================
@@ -66,7 +66,11 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
    ============================================================
 ```
 
-4. Copy `EASYROMS/omg-collection/` to the `EASYROMS` partition.
-5. Reboot the console
+4. Once you see that message or the screen goes blank for a while, then:
+ - Switch off the console by pressing the power button for ten seconds
+ - Extract the SD card and plug it in your PC
+ - Copy the `EASYROMS/omg-collection/` folder to the `EASYROMS` partition.
+
+5. Insert the SD card back into the console and reboot it. It will reboot again and with a bit of luck you should be able to go!
 
 ### Have Fun :)
