@@ -6,10 +6,9 @@ Digital consumerism has transformed the way we experience video games. We've mov
 
 A video game is not just a product. It is art.
 
-This project is a gaming meditation.
-
 <div align="center">
 
+   ## This project is a gaming meditation.
    ![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
 
 </div>
