@@ -8,6 +8,12 @@ A video game is not just a product. It is art.
 
 This project is a gaming meditation.
 
+<center>
+
+   ![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
+
+</center>
+
 ### How it works
 
 You create your own One Meaningful Game collection by choosing a MAME ROM of your liking, along with two or three other ROMs that you want to play from time to time.
