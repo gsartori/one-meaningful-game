@@ -316,6 +316,9 @@ sed -i \
     -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*video_font_enable[[:space:]]*=/d' \
+    -e '/^[[:space:]]*savestate_auto_load[[:space:]]*=/d' \
+    -e '/^[[:space:]]*savestate_max_keep[[:space:]]*=/d' \
+    -e '/^[[:space:]]*input_enable_hotkey_btn[[:space:]]*=/d' \
     "$RETROARCH_CONFIG_DEST"
 
 # Add OMG directory definitions and UI settings.
@@ -337,6 +340,14 @@ cache_directory = "${CONFIG_DIR}/cache"
 menu_timedate_enable = "false"
 menu_battery_level_enable = "true"
 video_font_enable = "false"
+input_enable_hotkey_btn = "13"
+
+# ------------------------------------------------------------
+# OMG Savestate handles only autoload
+# ------------------------------------------------------------
+savestate_auto_load = "true"
+savestate_max_keep = "1"
+
 EOF
 
 log "RetroArch OMG directories configured:"
