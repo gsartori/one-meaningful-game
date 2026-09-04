@@ -103,6 +103,32 @@ disable_service "NetworkManager-dispatcher.service"
 disable_service "emulationstation.service"
 
 # ------------------------------------------------------------
+# Configure hardware button handlers (pause.sh)
+# ------------------------------------------------------------
+PAUSE_SCRIPT="/usr/local/bin/pause.sh"
+PAUSE_BACKUP="/usr/local/bin/pause.sh.backup"
+
+log "Configuring hardware button handlers (pause.sh)..."
+
+if [ -f "$PAUSE_SCRIPT" ]; then
+    if [ ! -f "$PAUSE_BACKUP" ]; then
+        log "Backing up original pause.sh..."
+        cp -f "$PAUSE_SCRIPT" "$PAUSE_BACKUP"
+    fi
+
+    log "Replacing pause.sh with reboot command..."
+    cat << 'EOF' > "$PAUSE_SCRIPT"
+#!/bin/bash
+sync
+systemctl reboot
+EOF
+    chmod +x "$PAUSE_SCRIPT"
+    log "pause.sh configured to reboot system."
+else
+    log "Warning: $PAUSE_SCRIPT not found."
+fi
+
+# ------------------------------------------------------------
 # Enable OMG service
 # ------------------------------------------------------------
 log "Enabling $SERVICE_NAME..."

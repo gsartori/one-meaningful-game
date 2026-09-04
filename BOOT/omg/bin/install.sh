@@ -427,64 +427,6 @@ log "RetroArch core options path configured:"
 log "$RETROARCH_CORE_OPTIONS"
 
 # ------------------------------------------------------------
-# Backup pause.sh and replace it with finish.sh
-# ------------------------------------------------------------
-PAUSE_SCRIPT="/usr/local/bin/pause.sh"
-PAUSE_BACKUP="/usr/local/bin/pause.sh.backup"
-FINISH_SCRIPT="/usr/local/bin/finish.sh"
-
-log "Backing up pause.sh and replacing it with finish.sh."
-
-# ------------------------------------------------------------
-# Check required files
-# ------------------------------------------------------------
-if [ ! -f "$PAUSE_SCRIPT" ]; then
-    error "pause.sh not found:"
-    error "$PAUSE_SCRIPT"
-    exit 1
-fi
-
-if [ ! -f "$FINISH_SCRIPT" ]; then
-    error "finish.sh not found:"
-    error "$FINISH_SCRIPT"
-    exit 1
-fi
-
-# ------------------------------------------------------------
-# Backup original pause.sh
-# ------------------------------------------------------------
-if [ -f "$PAUSE_BACKUP" ]; then
-    log "pause.sh backup already exists."
-    log "Keeping:"
-    log "$PAUSE_BACKUP"
-else
-    log "Creating pause.sh backup:"
-    log "$PAUSE_SCRIPT -> $PAUSE_BACKUP"
-
-    if ! cp -f "$PAUSE_SCRIPT" "$PAUSE_BACKUP"; then
-        error "Unable to backup pause.sh."
-        exit 1
-    fi
-fi
-
-# ------------------------------------------------------------
-# Replace pause.sh with finish.sh
-# ------------------------------------------------------------
-log "Replacing pause.sh with finish.sh content."
-
-if ! cp -f "$FINISH_SCRIPT" "$PAUSE_SCRIPT"; then
-    error "Unable to replace pause.sh."
-    exit 1
-fi
-
-# ------------------------------------------------------------
-# Permissions
-# ------------------------------------------------------------
-chmod +x "$PAUSE_SCRIPT"
-
-log "pause.sh successfully replaced."
-
-# ------------------------------------------------------------
 # Installation flag
 # ------------------------------------------------------------
 
