@@ -31,9 +31,10 @@ A collection is a folder containing the game files. You can create as many colle
 
 3. Copy the One Meaningful Game MAME ROM you've chosen into the appropriate MAME version folder. You can have ROMs for:
 
-    * `mame2003`
-    * `mame2010`
-    * `mame` (latest version)
+    * `mame2003` (MAME version 0.78)
+    * `mame2010` (MAME version 0.139)
+    * `mame` (MAME latest version)
+    * `fbneo` (FinalBurn Neo)
 
 4. Edit `BOOT/omg/config.txt` and specify the name of your collection: `install_collection=my-collection`.
 

@@ -53,11 +53,13 @@ ROM_ROOT="${OMG_DIR}/roms"
 # ROM directories
 ROM_DIR_MAME2003="${ROM_ROOT}/mame2003"
 ROM_DIR_MAME2010="${ROM_ROOT}/mame2010"
+ROM_DIR_FBNEO="${ROM_ROOT}/fbneo"
 ROM_DIR_MAME="${ROM_ROOT}/mame"
 
 # Random directories
 RANDOM_DIR_MAME2003="${ROM_DIR_MAME2003}/random"
 RANDOM_DIR_MAME2010="${ROM_DIR_MAME2010}/random"
+RANDOM_DIR_FBNEO="${ROM_DIR_FBNEO}/random"
 RANDOM_DIR_MAME="${ROM_DIR_MAME}/random"
 
 # ------------------------------------------------------------
@@ -70,6 +72,7 @@ RETROARCH="/usr/local/bin/retroarch"
 # ------------------------------------------------------------
 CORE_MAME2003="/home/ark/.config/retroarch/cores/mame2003_plus_libretro.so"
 CORE_MAME2010="/home/ark/.config/retroarch/cores/mame2010_libretro.so"
+CORE_FBNEO="/home/ark/.config/retroarch/cores/fbneo_libretro.so"
 CORE_MAME="/home/ark/.config/retroarch/cores/mame_libretro.so"
 CORE=""
 
@@ -110,6 +113,14 @@ select_core()
 
             log "ROM belongs to mame2010."
             log "Using MAME2010 core:"
+            log "$CORE"
+            ;;
+
+        "$ROM_DIR_FBNEO"/*)
+            CORE="$CORE_FBNEO"
+
+            log "ROM belongs to fbneo."
+            log "Using FinalBurn Neo core:"
             log "$CORE"
             ;;
 
@@ -178,6 +189,7 @@ find_first_rom()
         find \
             "$ROM_DIR_MAME2003" \
             "$ROM_DIR_MAME2010" \
+            "$ROM_DIR_FBNEO" \
             "$ROM_DIR_MAME" \
             -maxdepth 1 \
             -type f \
@@ -205,6 +217,7 @@ build_random_list()
         find \
             "$RANDOM_DIR_MAME2003" \
             "$RANDOM_DIR_MAME2010" \
+            "$RANDOM_DIR_FBNEO" \
             "$RANDOM_DIR_MAME" \
             -maxdepth 1 \
             -type f \
@@ -309,16 +322,19 @@ log "ROM_ROOT=$ROM_ROOT"
 
 log "ROM_DIR_MAME2003=$ROM_DIR_MAME2003"
 log "ROM_DIR_MAME2010=$ROM_DIR_MAME2010"
+log "ROM_DIR_FBNEO=$ROM_DIR_FBNEO"
 log "ROM_DIR_MAME=$ROM_DIR_MAME"
 
 log "RANDOM_DIR_MAME2003=$RANDOM_DIR_MAME2003"
 log "RANDOM_DIR_MAME2010=$RANDOM_DIR_MAME2010"
+log "RANDOM_DIR_FBNEO=$RANDOM_DIR_FBNEO"
 log "RANDOM_DIR_MAME=$RANDOM_DIR_MAME"
 
 log "RETROARCH=$RETROARCH"
 
 log "CORE_MAME2003=$CORE_MAME2003"
 log "CORE_MAME2010=$CORE_MAME2010"
+log "CORE_FBNEO=$CORE_FBNEO"
 log "CORE_MAME=$CORE_MAME"
 
 log "============================================================"
@@ -461,6 +477,7 @@ if [ -z "$ROM" ]; then
     error "Searched:"
     error "$ROM_DIR_MAME2003"
     error "$ROM_DIR_MAME2010"
+    error "$ROM_DIR_FBNEO"
     error "$ROM_DIR_MAME"
     exit 1
 fi
