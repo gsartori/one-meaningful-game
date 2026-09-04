@@ -205,25 +205,43 @@ find_first_rom()
 # ------------------------------------------------------------
 build_random_list()
 {
+    local DIR
     local FILE
 
-    while IFS= read -r FILE; do
+    for DIR in \
+        "$RANDOM_DIR_MAME2003" \
+        "$RANDOM_DIR_MAME2010" \
+        "$RANDOM_DIR_FBNEO" \
+        "$RANDOM_DIR_MAME"
+    do
 
-        if is_valid_rom "$FILE"; then
-            echo "$FILE"
+        log "Scanning random directory:"
+        log "$DIR"
+
+        if [ ! -d "$DIR" ]; then
+            log "Random directory does not exist:"
+            log "$DIR"
+            continue
         fi
 
-    done < <(
-        find \
-            "$RANDOM_DIR_MAME2003" \
-            "$RANDOM_DIR_MAME2010" \
-            "$RANDOM_DIR_FBNEO" \
-            "$RANDOM_DIR_MAME" \
-            -maxdepth 1 \
-            -type f \
-            -printf '%p\n' 2>/dev/null |
-        sort -f
-    )
+        while IFS= read -r FILE; do
+
+            if is_valid_rom "$FILE"; then
+                log "Found random ROM:"
+                log "$FILE"
+
+                echo "$FILE"
+            fi
+
+        done < <(
+            find "$DIR" \
+                -maxdepth 1 \
+                -type f \
+                -print 2>/dev/null |
+            sort -f
+        )
+
+    done
 }
 
 # ------------------------------------------------------------
