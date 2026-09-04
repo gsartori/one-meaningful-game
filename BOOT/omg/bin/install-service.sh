@@ -116,14 +116,14 @@ if [ -f "$PAUSE_SCRIPT" ]; then
         cp -f "$PAUSE_SCRIPT" "$PAUSE_BACKUP"
     fi
 
-    log "Replacing pause.sh with reboot command..."
+    log "Replacing pause.sh with power-off command..."
     cat << 'EOF' > "$PAUSE_SCRIPT"
 #!/bin/bash
 sync
-systemctl reboot
+systemctl poweroff
 EOF
     chmod +x "$PAUSE_SCRIPT"
-    log "pause.sh configured to reboot system."
+    log "pause.sh configured to power off system."
 else
     log "Warning: $PAUSE_SCRIPT not found."
 fi
