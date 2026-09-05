@@ -67,7 +67,7 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
 ```
 
 4. Once you see that message or the screen goes blank for a while, then:
- - Switch off the console by pressing the power button for ten seconds
+ - Switch off the console by pressing the power button (if it does not switch off in a couple of seconds, keep it pressed for ten seconds)
  - Extract the SD card and plug it in your PC
  - Copy the `EASYROMS/omg-collection/` folder to the `EASYROMS` partition.
 
