@@ -50,18 +50,6 @@ RETROARCH_CONFIG="${CONFIG_DIR}/retroarch.cfg"
 # ROM root
 ROM_ROOT="${OMG_DIR}/roms"
 
-# ROM directories
-ROM_DIR_MAME2003="${ROM_ROOT}/mame2003"
-ROM_DIR_MAME2010="${ROM_ROOT}/mame2010"
-ROM_DIR_FBNEO="${ROM_ROOT}/fbneo"
-ROM_DIR_MAME="${ROM_ROOT}/mame"
-
-# Random directories
-RANDOM_DIR_MAME2003="${ROM_DIR_MAME2003}/random"
-RANDOM_DIR_MAME2010="${ROM_DIR_MAME2010}/random"
-RANDOM_DIR_FBNEO="${ROM_DIR_FBNEO}/random"
-RANDOM_DIR_MAME="${ROM_DIR_MAME}/random"
-
 # ------------------------------------------------------------
 # RetroArch
 # ------------------------------------------------------------
@@ -70,10 +58,7 @@ RETROARCH="/usr/local/bin/retroarch"
 # ------------------------------------------------------------
 # RetroArch cores
 # ------------------------------------------------------------
-CORE_MAME2003="/home/ark/.config/retroarch/cores/mame2003_plus_libretro.so"
-CORE_MAME2010="/home/ark/.config/retroarch/cores/mame2010_libretro.so"
-CORE_FBNEO="/home/ark/.config/retroarch/cores/fbneo_libretro.so"
-CORE_MAME="/home/ark/.config/retroarch/cores/mame_libretro.so"
+CORE_DIR="/home/ark/.config/retroarch/cores"
 CORE=""
 
 # ------------------------------------------------------------
@@ -98,46 +83,36 @@ START_TIME=$(date +%s%3N)
 # ------------------------------------------------------------
 select_core()
 {
+    local ROM_PATH
+    local CORE_NAME
+
+    CORE=""
     case "$ROM" in
-
-        "$ROM_DIR_MAME2003"/*)
-            CORE="$CORE_MAME2003"
-
-            log "ROM belongs to mame2003."
-            log "Using MAME2003-Plus core:"
-            log "$CORE"
+        "$ROM_ROOT"/*/*)
+            ROM_PATH="${ROM#"$ROM_ROOT"/}"
+            CORE_NAME="${ROM_PATH%%/*}"
             ;;
-
-        "$ROM_DIR_MAME2010"/*)
-            CORE="$CORE_MAME2010"
-
-            log "ROM belongs to mame2010."
-            log "Using MAME2010 core:"
-            log "$CORE"
-            ;;
-
-        "$ROM_DIR_FBNEO"/*)
-            CORE="$CORE_FBNEO"
-
-            log "ROM belongs to fbneo."
-            log "Using FinalBurn Neo core:"
-            log "$CORE"
-            ;;
-
-        "$ROM_DIR_MAME"/*)
-            CORE="$CORE_MAME"
-
-            log "ROM belongs to mame."
-            log "Using newer MAME core:"
-            log "$CORE"
-            ;;
-
         *)
             error "Unable to determine core."
             error "ROM=$ROM"
             return 1
             ;;
     esac
+
+    case "$CORE_NAME" in
+        ""|.*)
+            error "Invalid core directory: $CORE_NAME"
+            return 1
+            ;;
+        mame2003)
+            # Compatibility with collections using the old folder name.
+            CORE_NAME="mame2003_plus"
+            ;;
+    esac
+
+    CORE="${CORE_DIR}/${CORE_NAME}_libretro.so"
+    log "ROM core directory: ${ROM_PATH%%/*}"
+    log "Using core: $CORE"
 
     return 0
 }
@@ -186,14 +161,11 @@ find_first_rom()
         fi
 
     done < <(
-        find \
-            "$ROM_DIR_MAME2003" \
-            "$ROM_DIR_MAME2010" \
-            "$ROM_DIR_FBNEO" \
-            "$ROM_DIR_MAME" \
-            -maxdepth 1 \
+        find "$ROM_ROOT" \
+            -mindepth 2 -maxdepth 2 \
+            -not -path "$ROM_ROOT/.*/*" \
             -type f \
-            -printf '%p\n' 2>/dev/null |
+            -print 2>/dev/null |
         sort -f
     )
 
@@ -208,11 +180,7 @@ build_random_list()
     local DIR
     local FILE
 
-    for DIR in \
-        "$RANDOM_DIR_MAME2003" \
-        "$RANDOM_DIR_MAME2010" \
-        "$RANDOM_DIR_FBNEO" \
-        "$RANDOM_DIR_MAME"
+    for DIR in "$ROM_ROOT"/*/random
     do
 
         log "Scanning random directory:"
@@ -338,22 +306,8 @@ log "CONFIG_DIR=$CONFIG_DIR"
 
 log "ROM_ROOT=$ROM_ROOT"
 
-log "ROM_DIR_MAME2003=$ROM_DIR_MAME2003"
-log "ROM_DIR_MAME2010=$ROM_DIR_MAME2010"
-log "ROM_DIR_FBNEO=$ROM_DIR_FBNEO"
-log "ROM_DIR_MAME=$ROM_DIR_MAME"
-
-log "RANDOM_DIR_MAME2003=$RANDOM_DIR_MAME2003"
-log "RANDOM_DIR_MAME2010=$RANDOM_DIR_MAME2010"
-log "RANDOM_DIR_FBNEO=$RANDOM_DIR_FBNEO"
-log "RANDOM_DIR_MAME=$RANDOM_DIR_MAME"
-
 log "RETROARCH=$RETROARCH"
-
-log "CORE_MAME2003=$CORE_MAME2003"
-log "CORE_MAME2010=$CORE_MAME2010"
-log "CORE_FBNEO=$CORE_FBNEO"
-log "CORE_MAME=$CORE_MAME"
+log "CORE_DIR=$CORE_DIR"
 
 log "============================================================"
 
@@ -493,10 +447,7 @@ log "ROM selection completed after $(elapsed)."
 if [ -z "$ROM" ]; then
     error "No ROM found."
     error "Searched:"
-    error "$ROM_DIR_MAME2003"
-    error "$ROM_DIR_MAME2010"
-    error "$ROM_DIR_FBNEO"
-    error "$ROM_DIR_MAME"
+    error "$ROM_ROOT/<core>/*.zip"
     exit 1
 fi
 

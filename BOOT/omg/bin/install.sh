@@ -456,10 +456,7 @@ log "============================================================"
 log "Collection: $SOURCE_DIR"
 
 log "ROM structure:"
-log "$ROM_DIR/mame2003"
-log "$ROM_DIR/mame2010"
-log "$ROM_DIR/fbneo"
-log "$ROM_DIR/mame"
+log "$ROM_DIR/<core>"
 
 log "Global random index:"
 log "$RANDOM_INDEX_FILE"

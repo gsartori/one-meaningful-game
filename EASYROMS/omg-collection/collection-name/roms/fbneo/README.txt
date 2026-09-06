@@ -1,4 +1,4 @@
-Copy the MAME-2003 (0.78) ROMs here.
+Copy the FinalBurn Neo ROMs here.
 
 Only the first ROM in alphabetical order will be launched.
 

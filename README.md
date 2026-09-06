@@ -31,10 +31,14 @@ A collection is a folder containing the game files. You can create as many colle
 
 3. Copy the One Meaningful Game MAME ROM you've chosen into the appropriate MAME version folder. You can have ROMs for:
 
-    * `mame2003` (MAME version 0.78)
+    * `mame2003_plus` (MAME version 0.78))
     * `mame2010` (MAME version 0.139)
     * `mame` (MAME latest version)
     * `fbneo` (FinalBurn Neo)
+
+   The folder name selects the RetroArch core: `roms/<core>/game.zip` uses `/home/ark/.config/retroarch/cores/<core>_libretro.so`. For example, `roms/mame2003_plus/game.zip` uses `mame2003_plus_libretro.so`. The legacy folder name `mame2003` is also mapped to `mame2003_plus`.
+
+   You can add folders for other installed cores. Only ZIP ROMs are supported. ROMs in `roms/<core>/random/` use the same core as their parent folder.
 
 4. Edit `BOOT/omg/config.txt` and specify the name of your collection: `install_collection=my-collection`.
 
