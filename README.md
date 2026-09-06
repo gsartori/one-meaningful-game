@@ -15,7 +15,7 @@ A video game is not just a product. It is art.
 
 ### How it works
 
-You create your own One Meaningful Game collection by choosing a MAME ROM of your liking, along with two or three other ROMs that you want to play from time to time.
+You create your own One Meaningful Game collection by choosing a game playable with a RetroArch core installed on your console, along with two or three other games that you want to play from time to time. A collection can contain games for different systems and cores: each game's folder determines which core launches it.
 
 1. The first time you switch on the console, you'll be given the opportunity to play your One Meaningful Game.
 
@@ -29,20 +29,26 @@ A collection is a folder containing the game files. You can create as many colle
 
 2. Rename `EASYROMS/omg-collection/collection-name` to your chosen name (e.g. `EASYROMS/omg-collection/my-collection`).
 
-3. Copy the One Meaningful Game MAME ROM you've chosen into the appropriate MAME version folder. You can have ROMs for:
+3. Inside your collection's `roms` directory, create a folder named after the RetroArch core you want to use and copy your chosen ROM into it.
 
-    * `mame2003_plus` (MAME version 0.78))
-    * `mame2010` (MAME version 0.139)
-    * `mame` (MAME latest version)
-    * `fbneo` (FinalBurn Neo)
+   Use the core's library filename without the `_libretro.so` suffix as the folder name. The path `roms/<core>/game.zip` selects `/home/ark/.config/retroarch/cores/<core>_libretro.so`.
 
-   The folder name selects the RetroArch core: `roms/<core>/game.zip` uses `/home/ark/.config/retroarch/cores/<core>_libretro.so`. For example, `roms/mame2003_plus/game.zip` uses `mame2003_plus_libretro.so`. The legacy folder name `mame2003` is also mapped to `mame2003_plus`.
+   Examples, provided the corresponding core is installed:
 
-   You can add folders for other installed cores. Only ZIP ROMs are supported. ROMs in `roms/<core>/random/` use the same core as their parent folder.
+   | ROM folder | RetroArch core library |
+   | --- | --- |
+   | `roms/snes9x/` | `snes9x_libretro.so` |
+   | `roms/gambatte/` | `gambatte_libretro.so` |
+   | `roms/fbneo/` | `fbneo_libretro.so` |
+   | `roms/mame2003_plus/` | `mame2003_plus_libretro.so` |
+
+   You can use any installed RetroArch core by adding its folder; no script changes are needed. The launcher currently selects only `.zip` and `.ZIP` files, so your game must be playable from a ZIP archive with the selected core. Any BIOS files or other resources required by that core must also be available on the console.
+
+   For compatibility with older collections, the folder name `mame2003` also selects `mame2003_plus_libretro.so`.
 
 4. Edit `BOOT/omg/config.txt` and specify the name of your collection: `install_collection=my-collection`.
 
-5. **(OPTIONAL)** Copy the side games you've chosen into the `random` subfolder.
+5. **(OPTIONAL)** Copy the side games you've chosen into `roms/<core>/random/`. Each side game uses the core named by the folder above `random`; side games can use different cores from your main game.
 
 6. **(OPTIONAL)** Create a cover for the collection (the boot screen): a 640×480, 24-bit RGB Windows Bitmap (`.bmp`) image. Save it as `EASYROMS/omg-collection/collection-name/logo.bmp`.
 
