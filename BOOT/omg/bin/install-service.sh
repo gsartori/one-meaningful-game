@@ -38,12 +38,29 @@ error()
 }
 
 # ------------------------------------------------------------
-# Check root
+# Disable services used by dArkOS
 # ------------------------------------------------------------
-if [ "$(id -u)" -ne 0 ]; then
-    error "This script must be run as root."
-    exit 1
-fi
+disable_service()
+{
+    local service="$1"
+    log "Disabling $service."
+
+    if ! systemctl list-unit-files "$service" --no-legend 2>/dev/null | grep -q "^$service"; then
+        log "$service not found."
+        return 0
+    fi
+
+    if systemctl disable --now "$service" 2>/dev/null; then
+        log "$service disabled successfully."
+    else
+        log "Unable to disable $service."
+    fi
+}
+
+disable_service "welcome-message.service"
+disable_service "NetworkManager.service"
+disable_service "NetworkManager-dispatcher.service"
+disable_service "emulationstation.service"
 
 # ------------------------------------------------------------
 # Check service file
@@ -76,31 +93,6 @@ if ! systemctl daemon-reload; then
     error "systemctl daemon-reload failed."
     exit 1
 fi
-
-# ------------------------------------------------------------
-# Disable services used by dArkOS
-# ------------------------------------------------------------
-disable_service()
-{
-    local service="$1"
-    log "Disabling $service."
-
-    if ! systemctl list-unit-files "$service" --no-legend 2>/dev/null | grep -q "^$service"; then
-        log "$service not found."
-        return 0
-    fi
-
-    if systemctl disable --now "$service" 2>/dev/null; then
-        log "$service disabled successfully."
-    else
-        log "Unable to disable $service."
-    fi
-}
-
-disable_service "welcome-message.service"
-disable_service "NetworkManager.service"
-disable_service "NetworkManager-dispatcher.service"
-disable_service "emulationstation.service"
 
 # ------------------------------------------------------------
 # Configure hardware button handlers (pause.sh)
