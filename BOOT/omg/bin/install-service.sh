@@ -24,18 +24,21 @@ OMG_DIR="/boot/omg"
 SERVICE_SOURCE="${OMG_DIR}/bin/${SERVICE_NAME}"
 SERVICE_DEST="/etc/systemd/system/${SERVICE_NAME}"
 
-# ------------------------------------------------------------
-# Logging
-# ------------------------------------------------------------
-log()
-{
-    echo "[OMG] $*"
-}
+# Logs
+LOG_DIR="/roms/omg/logs"
+LOG_FILE="${LOG_DIR}/omg.log"
 
-error()
-{
-    echo "[OMG][ERROR] $*" >&2
-}
+# ------------------------------------------------------------
+# Read configuration
+# ------------------------------------------------------------
+source "${OMG_DIR}/bin/config.sh"
+load_omg_config || exit 1
+
+# ------------------------------------------------------------
+# Init logging
+# ------------------------------------------------------------
+source "${OMG_DIR}/bin/logging.sh"
+init_logging "INSTALL-SERVICE"
 
 # ------------------------------------------------------------
 # Disable services used by dArkOS
@@ -57,9 +60,9 @@ disable_service()
     fi
 }
 
-disable_service "welcome-message.service"
 disable_service "NetworkManager.service"
 disable_service "NetworkManager-dispatcher.service"
+disable_service "welcome-message.service"
 disable_service "emulationstation.service"
 
 # ------------------------------------------------------------
