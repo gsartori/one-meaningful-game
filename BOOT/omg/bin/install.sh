@@ -294,25 +294,12 @@ sed -i \
 log "RetroArch input configuration completed."
 
 # ------------------------------------------------------------
-# RetroArch OMG directories and UI
+# RetroArch OMG setup
 # ------------------------------------------------------------
-log "Configuring RetroArch OMG directories and UI."
+log "Configuring RetroArch for OMG"
 
-# Create OMG RetroArch directories.
-mkdir -p \
-    "${CONFIG_DIR}/saves" \
-    "${CONFIG_DIR}/states" \
-    "${CONFIG_DIR}/system" \
-    "${CONFIG_DIR}/remaps" \
-    "${CONFIG_DIR}/cache"
-
-# Remove existing OMG directory definitions and UI settings.
+# Remove existing OMG settings.
 sed -i \
-    -e '/^[[:space:]]*savefile_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*savestate_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*system_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*input_remapping_directory[[:space:]]*=/d' \
-    -e '/^[[:space:]]*cache_directory[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_timedate_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*menu_battery_level_enable[[:space:]]*=/d' \
     -e '/^[[:space:]]*video_font_enable[[:space:]]*=/d' \
@@ -323,16 +310,6 @@ sed -i \
 
 # Add OMG directory definitions and UI settings.
 cat >> "$RETROARCH_CONFIG_DEST" <<EOF
-
-# ------------------------------------------------------------
-# OMG directories
-# ------------------------------------------------------------
-
-savefile_directory = "${CONFIG_DIR}/saves"
-savestate_directory = "${CONFIG_DIR}/states"
-system_directory = "${CONFIG_DIR}/system"
-input_remapping_directory = "${CONFIG_DIR}/remaps"
-cache_directory = "${CONFIG_DIR}/cache"
 
 # ------------------------------------------------------------
 # OMG UI
@@ -349,13 +326,6 @@ savestate_auto_load = "true"
 savestate_max_keep = "1"
 
 EOF
-
-log "RetroArch OMG directories configured:"
-log "Save files: ${CONFIG_DIR}/saves"
-log "Save states: ${CONFIG_DIR}/states"
-log "System: ${CONFIG_DIR}/system"
-log "Remaps: ${CONFIG_DIR}/remaps"
-log "Cache: ${CONFIG_DIR}/cache"
 
 # ------------------------------------------------------------
 # RetroArch core options
