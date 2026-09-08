@@ -334,7 +334,10 @@ if [ ! -d "/roms/omg-collection" ]; then
     echo "============================================================"
     echo ""
 
-    exit 0
+    # Keep the service attached to the console until the user reboots.
+    while true; do
+        sleep 3600
+    done
 fi
 
 # ------------------------------------------------------------
