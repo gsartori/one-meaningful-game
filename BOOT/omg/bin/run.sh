@@ -15,8 +15,7 @@
 # limitations under the License.
 
 # ============================================================
-# OMG - One Meaningful Game
-# Runtime script
+# OMG Runtime Script
 # ============================================================
 set -u
 
@@ -26,29 +25,29 @@ set -u
 BOOT_DIR="/boot"
 
 # OMG scripts
-OMG_BOOT_DIR="${BOOT_DIR}/omg"
-INSTALL_SCRIPT="${OMG_BOOT_DIR}/bin/install.sh"
+OMG_DIR="${BOOT_DIR}/omg"
+INSTALL_COLLECTION="${OMG_DIR}/bin/install-collection.sh"
 
 # OMG data
-OMG_DIR="/roms/omg"
+OMG_ROMS_DIR="/roms/omg"
 
 # Installation state
-INSTALLED_FLAG="${OMG_DIR}/omg-installed"
-BOOT_COUNT_FILE="${OMG_DIR}/omg-boot-count"
+INSTALLED_FLAG="${OMG_ROMS_DIR}/omg-installed"
+BOOT_COUNT_FILE="${OMG_ROMS_DIR}/omg-boot-count"
 
 # Random rotation state
-RANDOM_INDEX_FILE="${OMG_DIR}/omg-random-index"
+RANDOM_INDEX_FILE="${OMG_ROMS_DIR}/omg-random-index"
 
 # Logs
 LOG_DIR="${OMG_DIR}/logs"
 LOG_FILE="${LOG_DIR}/omg.log"
 
 # RetroArch configuration
-CONFIG_DIR="${OMG_DIR}/config"
+CONFIG_DIR="${OMG_ROMS_DIR}/config"
 RETROARCH_CONFIG="${CONFIG_DIR}/retroarch.cfg"
 
 # ROM root
-ROM_ROOT="${OMG_DIR}/roms"
+ROM_ROOT="${OMG_ROMS_DIR}/roms"
 
 # ------------------------------------------------------------
 # RetroArch
@@ -64,13 +63,13 @@ CORE=""
 # ------------------------------------------------------------
 # Read configuration
 # ------------------------------------------------------------
-source "${OMG_BOOT_DIR}/bin/config.sh"
+source "${OMG_DIR}/bin/config.sh"
 load_omg_config || exit 1
 
 # ------------------------------------------------------------
 # Init logging
 # ------------------------------------------------------------
-source "${OMG_BOOT_DIR}/bin/logging.sh"
+source "${OMG_DIR}/bin/logging.sh"
 init_logging "RUN"
 
 # ------------------------------------------------------------
@@ -294,9 +293,9 @@ log "User: $(id -un)"
 log "UID: $(id -u)"
 log "Start timestamp: $(timestamp)"
 
-log "OMG_BOOT_DIR=$OMG_BOOT_DIR"
 log "OMG_DIR=$OMG_DIR"
-log "INSTALL_SCRIPT=$INSTALL_SCRIPT"
+log "OMG_ROMS_DIR=$OMG_ROMS_DIR"
+log "INSTALL_COLLECTION=$INSTALL_COLLECTION"
 log "INSTALLED_FLAG=$INSTALLED_FLAG"
 log "BOOT_COUNT_FILE=$BOOT_COUNT_FILE"
 log "RANDOM_INDEX_FILE=$RANDOM_INDEX_FILE"
@@ -346,20 +345,20 @@ fi
 if [ ! -f "$INSTALLED_FLAG" ]; then
 
     log "============================================================"
-    log "OMG IS NOT INSTALLED"
+    log "OMG COLLECTION IS NOT INSTALLED"
     log "Starting installation."
     log "============================================================"
 
-    if [ ! -f "$INSTALL_SCRIPT" ]; then
+    if [ ! -f "$INSTALL_COLLECTION" ]; then
         error "Installation script not found:"
-        error "$INSTALL_SCRIPT"
+        error "$INSTALL_COLLECTION"
         exit 1
     fi
 
     log "Running installation script:"
-    log "$INSTALL_SCRIPT"
+    log "$INSTALL_COLLECTION"
 
-    if ! /bin/bash "$INSTALL_SCRIPT"; then
+    if ! /bin/bash "$INSTALL_COLLECTION"; then
         error "OMG installation failed."
         exit 1
     fi

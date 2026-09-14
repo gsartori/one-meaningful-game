@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ------------------------------------------------------------
-# OMG service installation
+# OMG installation
 # ------------------------------------------------------------
-/bin/bash /boot/omg/bin/install-service.sh > /dev/tty1 2>&1
+/bin/bash /boot/omg/bin/install.sh > /dev/tty1 2>&1
 
 # ------------------------------------------------------------
 # dArkOS first boot

@@ -46,7 +46,7 @@ A collection is a folder containing the game files. You can create as many colle
 
    For compatibility with older collections, the folder name `mame2003` also selects `mame2003_plus_libretro.so`.
 
-4. Edit `BOOT/omg/config.txt` and specify the name of your collection: `install_collection=my-collection`.
+4. Edit `BOOT/omg/config/omg.cfg` and specify the name of your collection: `install_collection=my-collection`.
 
 5. **(OPTIONAL)** Copy the side games you've chosen into `roms/<core>/random/`. Each side game uses the core named by the folder above `random`; side games can use different cores from your main game.
 

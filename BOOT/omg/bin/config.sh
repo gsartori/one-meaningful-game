@@ -15,10 +15,10 @@
 # limitations under the License.
 
 # ------------------------------------------------------------
-# OMG configuration
+# OMG Configuration
 # ------------------------------------------------------------
 
-OMG_CONFIG="/boot/omg/config.txt"
+OMG_CONFIG="/boot/omg/config/omg.cfg"
 
 declare -A OMG_CONFIG_VALUES
 
