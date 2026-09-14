@@ -60,7 +60,7 @@ DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. I
 
 1. [Download the latest release of dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases) and create an SD card for it [following the instructions](https://github.com/southoz/dArkOSRE-R36/wiki/Firmware-Installation).
 
-2. Before running dArkOSRE for the first time, copy the contents of the `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `firstboot.sh` file.
+2. Before running dArkOSRE for the first time, copy the contents of the `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `expandtoexfat.sh` file.
 
 3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Game. It will reboot the console a couple of times then you should see this message or a frozen blank screen:
 
