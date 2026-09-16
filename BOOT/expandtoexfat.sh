@@ -112,27 +112,45 @@ fi
   # ----------------------------------------------------------
   # Restore ROM structure
   # ----------------------------------------------------------
-  (pv -n /roms.tar | \
+
+  # Keep pv progress separate from tar errors.
+  # This prevents tar warnings from corrupting VAL.
+
+  : > /tmp/pv_stat.txt
+  : > /tmp/tar_error.txt
+
+  (
+    pv -n /roms.tar \
+      2> /tmp/pv_stat.txt |
     tar --no-same-permissions \
         --no-same-owner \
         --warning=no-timestamp \
-        -xf - -C /) &> /tmp/tar_stat.txt &
+        -xf - -C / \
+        2> /tmp/tar_error.txt
+  ) &
 
   let COUNT=1
+  SAMEVAL=""
 
   while true; do
-    VAL=$(tail -n 1 /tmp/tar_stat.txt)
 
-    if [[ "$VAL" == "100" ]]; then
+    VAL=$(tail -n 1 /tmp/pv_stat.txt)
 
-      VAL_INT=$(awk "BEGIN {print ($VAL / 100) * 20 + 60}" 2> /dev/null | cut -d '.' -f1)
+    if [[ "$VAL" =~ ^[0-9]+$ ]] && [[ "$VAL" == "100" ]]; then
+
+      VAL_INT=$(awk "BEGIN {print ($VAL / 100) * 20 + 60}" \
+        2> /dev/null | cut -d '.' -f1)
+
       echo $VAL_INT
       break
 
-    elif [[ "$VAL" != "$SAMEVAL" ]]; then
+    elif [[ "$VAL" =~ ^[0-9]+$ ]] && [[ "$VAL" != "$SAMEVAL" ]]; then
 
-      VAL_INT=$(awk "BEGIN {print ($VAL / 100) * 20 + 60}" 2> /dev/null | cut -d '.' -f1)
+      VAL_INT=$(awk "BEGIN {print ($VAL / 100) * 20 + 60}" \
+        2> /dev/null | cut -d '.' -f1)
+
       echo $VAL_INT
+
       SAMEVAL="$VAL"
       continue
 
@@ -156,30 +174,55 @@ fi
   # ----------------------------------------------------------
   cd /tempthemes
 
-  (tar --no-same-permissions \
-       --no-same-owner \
-       --warning=no-timestamp \
-       -cf - . | \
-   pv -n -s $(du -sb /tempthemes/ | awk '{print $1}') | \
-   tar --no-same-permissions \
-       --no-same-owner \
-       -xf - -C /roms/themes/) &> /tmp/tar_stat.txt &
+  # Keep pv progress separate from tar errors.
+  #
+  # IMPORTANT:
+  # --warning=no-timestamp is applied to BOTH tar commands.
+  # This prevents "time stamp ... is in the future" warnings
+  # from being displayed during first boot.
+
+  : > /tmp/pv_themes_stat.txt
+  : > /tmp/tar_themes_error.txt
+
+  (
+    tar --no-same-permissions \
+        --no-same-owner \
+        --warning=no-timestamp \
+        -cf - . |
+    pv -n \
+       -s "$(du -sb /tempthemes/ | awk '{print $1}')" \
+       2> /tmp/pv_themes_stat.txt |
+    tar --no-same-permissions \
+        --no-same-owner \
+        --warning=no-timestamp \
+        -xf - -C /roms/themes/ \
+        2> /tmp/tar_themes_error.txt
+  ) &
 
   let COUNT=1
+  SAMEVAL=""
 
   while true; do
-    VAL=$(tail -n 1 /tmp/tar_stat.txt)
 
-    if [[ "$VAL" -ge "100" ]]; then
+    VAL=$(tail -n 1 /tmp/pv_themes_stat.txt)
 
-      VAL_INT_CP=$(awk "BEGIN {print ($VAL / 100) * 15 + 80}" 2> /dev/null | cut -d '.' -f1)
+    if [[ "$VAL" =~ ^[0-9]+$ ]] && [[ "$VAL" -ge "100" ]]; then
+
+      VAL_INT_CP=$(awk "BEGIN {print ($VAL / 100) * 15 + 80}" \
+        2> /dev/null | cut -d '.' -f1)
+
       echo $VAL_INT_CP
       break
 
-    elif [[ "$VAL" != "$SAMEVAL" ]] && [[ ! -z "$VAL" ]]; then
+    elif [[ "$VAL" =~ ^[0-9]+$ ]] && \
+         [[ "$VAL" != "$SAMEVAL" ]] && \
+         [[ -n "$VAL" ]]; then
 
-      VAL_INT_CP=$(awk "BEGIN {print ($VAL / 100) * 15 + 80}" 2> /dev/null | cut -d '.' -f1)
+      VAL_INT_CP=$(awk "BEGIN {print ($VAL / 100) * 15 + 80}" \
+        2> /dev/null | cut -d '.' -f1)
+
       echo $VAL_INT_CP
+
       SAMEVAL="$VAL"
       continue
 
@@ -202,6 +245,7 @@ fi
 
   cd ..
 
+  # Wait until the theme extraction has finished.
   while true; do
     if [[ -z $(pidof tar) ]]; then
       sudo rm -rf /tempthemes &> /dev/null
