@@ -2,90 +2,228 @@
 
 ### Turn Your R36S/R36H Into a Dedicated Single-Game Console
 
-Digital consumerism has transformed the way we experience video games. We've moved from owning games to constantly consuming them. The problem isn't simply that there are too many games. It's that we have too little time, attention, and presence to truly experience them.
+One Meaningful Game (OMG) is a custom setup for dArkOS that turns your R36S/R36H into a console focused on **one main game**.
 
-A video game is not just a product. It is art.
+The idea is simple: instead of constantly browsing a huge library, you choose one game to experience properly, while keeping a few side games available for occasional play.
 
 <div align="center">
 
-   ### This project is a gaming meditation.
-   ![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
+### This project is a gaming meditation.
+
+![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
 
 </div>
 
-### How it works
+## How it works
 
-You create your own One Meaningful Game collection by choosing a game playable with a RetroArch core installed on your console, along with two or three other games that you want to play from time to time. A collection can contain games for different systems and cores: each game's folder determines which core launches it.
+You create an **OMG collection** containing:
 
-1. The first time you switch on the console, you'll be given the opportunity to play your One Meaningful Game.
+- one main game;
+- optionally, two or three side games;
 
-2. Each time you reboot or switch off your console, one of the side games you've chosen for your collection will run sequentially.
+The collection can contain games from different systems and cores.
 
-### Build your collection
+- **First boot:** your main game is launched.
+- **Each subsequent reboot:** one of the optional side games is selected sequentially.
 
-A collection is a folder containing the game files. You can create as many collections as you like, but only one can be installed at a time.
+Only one collection can be installed at a time, but you can create as many collections as you like.
+
+---
+
+## Build your collection
 
 1. Download the content of this project.
 
-2. Rename `EASYROMS/omg-collection/collection-name` to your chosen name (e.g. `EASYROMS/omg-collection/my-collection`).
+2. Rename:
 
-3. Inside your collection's `roms` directory, create a folder named after the RetroArch core you want to use and copy your chosen ROM into it.
+   ```text
+   EASYROMS/omg-collection/collection-name
+   ```
 
-   Use the core's library filename without the `_libretro.so` suffix as the folder name. The path `roms/<core>/game.zip` selects `/home/ark/.config/retroarch/cores/<core>_libretro.so`.
+   to your chosen collection name, for example:
 
-   Examples, provided the corresponding core is installed:
+   ```text
+   EASYROMS/omg-collection/my-collection
+   ```
 
-   | ROM folder | RetroArch core library |
-   | --- | --- |
+3. Put your main game inside:
+
+   ```text
+   roms/<core>/
+   ```
+
+   The folder name must match the RetroArch core library name **without** `_libretro.so`.
+
+   For example:
+
+   | ROM folder | RetroArch core |
+      | --- | --- |
    | `roms/snes9x/` | `snes9x_libretro.so` |
    | `roms/gambatte/` | `gambatte_libretro.so` |
    | `roms/fbneo/` | `fbneo_libretro.so` |
    | `roms/mame2003_plus/` | `mame2003_plus_libretro.so` |
 
-   You can use any installed RetroArch core by adding its folder; no script changes are needed. The launcher currently selects only `.zip` and `.ZIP` files, so your game must be playable from a ZIP archive with the selected core. Any BIOS files or other resources required by that core must also be available on the console.
+   Any installed RetroArch core can be used without changing the scripts.
 
-   For compatibility with older collections, the folder name `mame2003` also selects `mame2003_plus_libretro.so`.
+   The launcher currently supports `.zip` and `.ZIP` files, so the main game must be playable from a ZIP archive using the selected core.
 
-4. Edit `BOOT/omg/config/omg.cfg` and specify the name of your collection: `install_collection=my-collection`.
+   Required BIOS files and other core resources must also be present on the console.
 
-5. **(OPTIONAL)** Copy the side games you've chosen into `roms/<core>/random/`. Each side game uses the core named by the folder above `random`; side games can use different cores from your main game.
+   For compatibility with older collections, `mame2003` also selects `mame2003_plus_libretro.so`.
 
-6. **(OPTIONAL)** Create a cover for the collection (the boot screen): a 640×480, 24-bit RGB Windows Bitmap (`.bmp`) image. Save it as `EASYROMS/omg-collection/collection-name/logo.bmp`.
+4. Edit:
 
-### Install
+   ```text
+   BOOT/omg/config/omg.cfg
+   ```
 
-OMG works with both [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36) and [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S). The installation steps below apply to both.
+   and set:
 
-DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. INSTALL IT ON A FRESH DARKOS INSTALLATION. IT WILL NOT WORK ON AN EXISTING DARKOS SD CARD.
+   ```text
+   install_collection=my-collection
+   ```
+
+5. **Optional:** add side games to:
+
+   ```text
+   roms/<core>/random/
+   ```
+
+   The core is determined by the folder containing `random`, so side games can use different cores from the main game.
+
+6. **Optional:** add a collection cover for the boot screen.
+
+   Use a:
+
+   - 640×480 image
+   - 24-bit RGB
+   - Windows Bitmap (`.bmp`)
+
+   Save it as:
+
+   ```text
+   EASYROMS/omg-collection/my-collection/logo.bmp
+   ```
+
+---
+
+# Installation
+
+OMG works with:
+
+- [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36)
+- [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S)
+
+The installation procedure is the same for both.
+
+> [!WARNING]
+> **OMG is an amateur project. Use it at your own risk.**
+>
+> Install it on a **fresh dArkOS installation only**. It is not intended to be installed on an existing dArkOS SD card.
 
 > [!IMPORTANT]
-> **Copy OMG's `BOOT` files to the SD card BEFORE the very first boot of dArkOS.** After flashing the firmware, complete step 2 before switching on the console. If you have already booted dArkOS, reflash the SD card and start again. The `EASYROMS/omg-collection/` folder is copied later, at step 4.
+> **OMG's `BOOT` files must be copied to the SD card BEFORE the first dArkOS boot.**
+>
+> If dArkOS has already been booted, reflash the SD card and start again.
+>
+> The `EASYROMS/omg-collection/` folder is copied later during the installation.
 
-**ATTENTION PLEASE: The installation will configure your dArkOS to run only One Meaningful Game. Once the installation process has been completed, you will not be able to easily revert the installation.**
+> [!WARNING]
+> **OMG changes dArkOS to run as a One Meaningful Game console.**
+>
+> Once installation is complete, reverting to the standard dArkOS setup is not straightforward.
 
-1. Download the latest release of [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases) or [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S/releases) and flash it to an SD card, following the installation instructions for your chosen firmware. **Do not boot the console yet.**
+### 1. Flash dArkOS
 
-2. **BEFORE the first boot of dArkOS**, copy the contents of OMG's `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `expandtoexfat.sh` file.
+Download the latest release of either:
 
-3. Once OMG's `BOOT` files have been copied, boot dArkOS for the first time. It will install dArkOS and One Meaningful Game. It will reboot the console a couple of times then you should see this message or a frozen blank screen:
+- [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases)
+- [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S/releases)
+
+Flash it to your SD card following the instructions for your chosen firmware.
+
+**Do not boot the console yet.**
+
+### 2. Copy OMG to the BOOT partition
+
+**Before the first boot**, copy the contents of OMG's:
 
 ```text
-   ============================================================
-   
-                      ONE MEANINGFUL GAME
-   
-    Copy the '/EASYROMS/omg-collection' to the EASYROMS partition
-                                &
-                        Reboot the system
-   
-   ============================================================
+BOOT/
 ```
 
-4. Once you see that message or the screen goes blank for a while, then:
- - Switch off the console by pressing the power button (if it does not switch off in a couple of seconds, keep it pressed for ten seconds)
- - Extract the SD card and plug it in your PC
- - Copy the `EASYROMS/omg-collection/` folder to the `EASYROMS` partition.
+to the SD card's:
 
-5. Insert the SD card back into the console and reboot it. It will reboot again and with a bit of luck you should be able to go!
+```text
+BOOT/
+```
 
-### Have Fun :)
+partition.
+
+Overwrite the existing:
+
+```text
+expandtoexfat.sh
+```
+
+file.
+
+### 3. First boot
+
+Insert the SD card and boot the console.
+
+dArkOS and OMG will be installed automatically. The console may reboot several times.
+
+Eventually you should see a message asking you to copy the OMG collection:
+
+```text
+============================================================
+
+                     ONE MEANINGFUL GAME
+
+    Copy the '/EASYROMS/omg-collection' to the EASYROMS partition
+
+                             &
+
+                     Reboot the system
+
+============================================================
+```
+
+A blank or apparently frozen screen at this stage can also be normal.
+
+### 4. Copy your collection
+
+Switch off the console.
+
+If necessary, hold the power button for approximately 10 seconds.
+
+Remove the SD card and connect it to your PC.
+
+Copy:
+
+```text
+EASYROMS/omg-collection/
+```
+
+to the SD card's:
+
+```text
+EASYROMS/
+```
+
+partition.
+
+### 5. Finish the installation
+
+Put the SD card back into the console and boot it again.
+
+OMG will install the selected collection and reboot the console.
+
+Your **One Meaningful Game** setup should now be ready.
+
+---
+
+## Have Fun :)
+
+**Play less. Play meaningfully.**
