@@ -20,6 +20,9 @@ You create an **OMG collection** containing:
 
 - one main game;
 - optionally, two or three side games;
+- optionally, a custom boot logo;
+- optionally, a custom low-battery image;
+- the RetroArch configuration required by the collection.
 
 The collection can contain games from different systems and cores.
 
@@ -40,7 +43,7 @@ Only one collection can be installed at a time, but you can create as many colle
    EASYROMS/omg-collection/collection-name
    ```
 
-   to your chosen collection name, for example:
+to your chosen collection name, for example:
 
    ```text
    EASYROMS/omg-collection/my-collection
@@ -56,11 +59,11 @@ Only one collection can be installed at a time, but you can create as many colle
 
    For example:
 
-   | ROM folder | RetroArch core |
-      | --- | --- |
-   | `roms/snes9x/` | `snes9x_libretro.so` |
-   | `roms/gambatte/` | `gambatte_libretro.so` |
-   | `roms/fbneo/` | `fbneo_libretro.so` |
+   | ROM folder            | RetroArch core              |
+      | --------------------- | --------------------------- |
+   | `roms/snes9x/`        | `snes9x_libretro.so`        |
+   | `roms/gambatte/`      | `gambatte_libretro.so`      |
+   | `roms/fbneo/`         | `fbneo_libretro.so`         |
    | `roms/mame2003_plus/` | `mame2003_plus_libretro.so` |
 
    Any installed RetroArch core can be used without changing the scripts.
@@ -95,9 +98,9 @@ Only one collection can be installed at a time, but you can create as many colle
 
    Use a:
 
-   - 640×480 image
-   - 24-bit RGB
-   - Windows Bitmap (`.bmp`)
+   * 640×480 image
+   * 24-bit RGB
+   * Windows Bitmap (`.bmp`)
 
    Save it as:
 
@@ -105,14 +108,75 @@ Only one collection can be installed at a time, but you can create as many colle
    EASYROMS/omg-collection/my-collection/logo.bmp
    ```
 
+   The file is installed as:
+
+   ```text
+   /boot/logo.bmp
+   ```
+
+7. **Optional:** add a custom low-battery image.
+
+   Use a:
+
+   * 640×480 image
+   * 24-bit RGB
+   * Windows Bitmap (`.bmp`)
+
+   Save it as:
+
+   ```text
+   EASYROMS/omg-collection/my-collection/low_battery.bmp
+   ```
+
+   If present, the image is installed as:
+
+   ```text
+   /boot/low_battery.bmp
+   ```
+
+   The original dArkOS image is backed up as:
+
+   ```text
+   /boot/low_battery-backup.bmp
+   ```
+
+   If `low_battery.bmp` is not included in the collection, the existing system image is left unchanged.
+
+8. **RetroArch configuration:**
+
+   The collection configuration is stored in:
+
+   ```text
+   BOOT/omg/config/
+   ```
+
+   Everything inside this directory is copied to:
+
+   ```text
+   /roms/omg/config/
+   ```
+
+   This includes the RetroArch configuration and core options.
+
+   For example:
+
+   ```text
+   BOOT/omg/config/
+   ├── omg.cfg
+   ├── retroarch.cfg
+   └── retroarch-core-options.cfg
+   ```
+
+   The `retroarch.cfg` and core options are therefore **collection-specific** and are not copied from the existing dArkOS RetroArch configuration.
+
 ---
 
 # Installation
 
 OMG works with:
 
-- [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36)
-- [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S)
+* [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36)
+* [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S)
 
 The installation procedure is the same for both.
 
@@ -137,8 +201,8 @@ The installation procedure is the same for both.
 
 Download the latest release of either:
 
-- [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases)
-- [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S/releases)
+* [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases)
+* [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S/releases)
 
 Flash it to your SD card following the instructions for your chosen firmware.
 
