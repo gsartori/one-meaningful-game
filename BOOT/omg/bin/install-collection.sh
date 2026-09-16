@@ -36,7 +36,6 @@ LOG_FILE="${LOG_DIR}/omg.log"
 
 # RetroArch configuration
 CONFIG_DIR="${OMG_ROMS_DIR}/config"
-RETROARCH_CONFIG_DEST="${CONFIG_DIR}/retroarch.cfg"
 
 # ROMs
 ROM_DIR="${OMG_ROMS_DIR}/roms"
@@ -57,7 +56,9 @@ COLLECTION_DIR="/roms/omg-collection"
 # ------------------------------------------------------------
 LOGO="/boot/logo.bmp"
 LOGO_BACKUP="/boot/logo-backup.bmp"
-RETROARCH_CONFIG_ORIGINAL="/home/ark/.config/retroarch/retroarch.cfg"
+
+LOW_BATTERY="/boot/low_battery.bmp"
+LOW_BATTERY_BACKUP="/boot/low_battery-backup.bmp"
 
 # ------------------------------------------------------------
 # Read configuration
@@ -140,13 +141,21 @@ log "$COLLECTION_NAME"
 # ------------------------------------------------------------
 SOURCE_DIR="${COLLECTION_DIR}/${COLLECTION_NAME}"
 SOURCE_ROM_DIR="${SOURCE_DIR}/roms"
+
 SOURCE_LOGO="${SOURCE_DIR}/logo.bmp"
+SOURCE_LOW_BATTERY="${SOURCE_DIR}/low_battery.bmp"
 
 log "Source collection:"
 log "$SOURCE_DIR"
 
 log "Source ROM directory:"
 log "$SOURCE_ROM_DIR"
+
+log "Source logo:"
+log "$SOURCE_LOGO"
+
+log "Source low battery image:"
+log "$SOURCE_LOW_BATTERY"
 
 # ------------------------------------------------------------
 # Check collection
@@ -215,6 +224,49 @@ if ! cp -f "$SOURCE_LOGO" "$LOGO"; then
 fi
 
 # ------------------------------------------------------------
+# Backup original low battery image
+# ------------------------------------------------------------
+if [ -f "$SOURCE_LOW_BATTERY" ]; then
+
+    if [ -f "$LOW_BATTERY_BACKUP" ]; then
+        log "Original low battery image backup already exists."
+        log "Keeping:"
+        log "$LOW_BATTERY_BACKUP"
+    else
+        if [ -f "$LOW_BATTERY" ]; then
+            log "Backing up original low battery image:"
+            log "$LOW_BATTERY -> $LOW_BATTERY_BACKUP"
+
+            if ! cp -f "$LOW_BATTERY" "$LOW_BATTERY_BACKUP"; then
+                error "Unable to backup original low battery image."
+                exit 1
+            fi
+        else
+            log "No existing low battery image found."
+            log "No backup required."
+        fi
+    fi
+
+    # --------------------------------------------------------
+    # Install custom low battery image
+    # --------------------------------------------------------
+    log "Installing OMG low battery image:"
+    log "$SOURCE_LOW_BATTERY -> $LOW_BATTERY"
+
+    if ! cp -f "$SOURCE_LOW_BATTERY" "$LOW_BATTERY"; then
+        error "Unable to install low battery image."
+        exit 1
+    fi
+
+else
+    log "No custom low battery image found in collection."
+    log "Expected:"
+    log "$SOURCE_LOW_BATTERY"
+    log "Keeping existing:"
+    log "$LOW_BATTERY"
+fi
+
+# ------------------------------------------------------------
 # Install ROM collection
 # ------------------------------------------------------------
 log "Removing previous OMG ROM collection."
@@ -254,64 +306,31 @@ if ! echo "0" > "$RANDOM_INDEX_FILE"; then
 fi
 
 # ------------------------------------------------------------
-# RetroArch configuration
-# ------------------------------------------------------------
-log "Copying original RetroArch configuration."
-
-if [ ! -f "$RETROARCH_CONFIG_ORIGINAL" ]; then
-    error "Original RetroArch configuration not found:"
-    error "$RETROARCH_CONFIG_ORIGINAL"
-    exit 1
-fi
-
-if ! cp -f \
-    "$RETROARCH_CONFIG_ORIGINAL" \
-    "$RETROARCH_CONFIG_DEST"; then
-    error "Unable to copy RetroArch configuration."
-    exit 1
-fi
-
-# ------------------------------------------------------------
-# Make RetroArch use OMG core options
-# ------------------------------------------------------------
-RETROARCH_CORE_OPTIONS="${CONFIG_DIR}/retroarch-core-options.cfg"
-
-log "Configuring RetroArch core options path."
-
-if grep -q '^core_options_path' "$RETROARCH_CONFIG_DEST"; then
-    sed -i \
-        "s|^core_options_path[[:space:]]*=.*|core_options_path = \"$RETROARCH_CORE_OPTIONS\"|" \
-        "$RETROARCH_CONFIG_DEST"
-else
-    echo "core_options_path = \"$RETROARCH_CORE_OPTIONS\"" \
-        >> "$RETROARCH_CONFIG_DEST"
-fi
-
-# ------------------------------------------------------------
-# Copy custom OMG configuration
+# Custom OMG configuration
 # ------------------------------------------------------------
 OMG_BOOT_CONFIG_DIR="${OMG_DIR}/config"
 
 log "Installing custom OMG configuration files."
 
 if [ -d "$OMG_BOOT_CONFIG_DIR" ]; then
+
     log "Copying custom configuration:"
     log "$OMG_BOOT_CONFIG_DIR -> $CONFIG_DIR"
 
     copy_folder "$OMG_BOOT_CONFIG_DIR" "$CONFIG_DIR"
-
 else
-    log "No custom OMG configuration directory found:"
-    log "$OMG_BOOT_CONFIG_DIR"
+    error "OMG configuration directory not found:"
+    error "$OMG_BOOT_CONFIG_DIR"
+    exit 1
 fi
 
 # ------------------------------------------------------------
-# Sync RetroArch configuration
+# Sync configuration
 # ------------------------------------------------------------
 sync
 
-log "RetroArch core options path configured:"
-log "$RETROARCH_CORE_OPTIONS"
+log "OMG configuration installed:"
+log "$CONFIG_DIR"
 
 # ------------------------------------------------------------
 # Installation flag
@@ -351,8 +370,15 @@ log "$RANDOM_INDEX_FILE"
 log "Boot logo:"
 log "$LOGO"
 
-log "RetroArch config:"
-log "$RETROARCH_CONFIG_DEST"
+log "Low battery image:"
+if [ -f "$LOW_BATTERY" ]; then
+    log "$LOW_BATTERY"
+else
+    log "Not installed / existing image preserved"
+fi
+
+log "OMG configuration:"
+log "$CONFIG_DIR"
 
 log "Installation flag:"
 log "$INSTALLED_FLAG"
