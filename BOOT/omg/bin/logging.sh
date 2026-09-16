@@ -60,3 +60,18 @@ error()
         echo "$(timestamp) [OMG][$LOG_CONTEXT][ERROR] $*" >> "$LOG_FILE"
     fi
 }
+
+# ------------------------------------------------------------
+# Show message
+# ------------------------------------------------------------
+show_message()
+{
+    local MESSAGE="$1"
+    setfont /usr/share/consolefonts/Lat7-Terminus20x10.psf.gz
+    dialog \
+        --title "ONE MEANINGFUL GAME" \
+        --infobox \
+        "$MESSAGE" \
+        20 60 \
+        2>&1 > /dev/tty1
+}

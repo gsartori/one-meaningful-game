@@ -321,14 +321,10 @@ if [ ! -d "/roms/omg-collection" ]; then
     log "Waiting for user to install the OMG collection."
     log "============================================================"
 
-    dialog \
-        --title "ONE MEANINGFUL GAME" \
-        --infobox \
-        "Copy the '/EASYROMS/omg-collection' in the EASYROMS partition\n\n\
-&\n\n\
-Reboot the system" \
-        15 55 \
-        2>&1 > /dev/tty1
+    show_message \
+"> Press POWER to Switch off the console.\n\n\
+Copy the '/EASYROMS/omg-collection' in the EASYROMS partition.\n\n
+> Reboot the console." \
 
     # Keep the service attached to the console until the user reboots.
     while true; do

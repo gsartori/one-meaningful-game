@@ -76,12 +76,15 @@ init_logging "INSTALL-COLLECTION"
 # ------------------------------------------------------------
 copy_folder()
 {
-    local source="$1"
-    local destination="$2"
+    local SRC="$1"
+    local DST="$2"
 
-    rsync -a \
+    rsync -r \
+        --no-owner \
+        --no-group \
+        --no-perms \
         --exclude='.*' \
-        "$source/" "$destination/"
+        "$SRC/" "$DST/"
 }
 
 # ------------------------------------------------------------
@@ -120,6 +123,12 @@ COLLECTION_NAME="${OMG_CONFIG_VALUES[install_collection]:-}"
 
 if [ -z "$COLLECTION_NAME" ]; then
     error "install_collection is not configured."
+
+    show_message \
+"No OMG collection has been configured.\n\n\
+The 'install_collection' value is missing from omg.cfg.\n\n\
+Please configure a collection and reboot the system."
+
     exit 1
 fi
 
@@ -145,6 +154,17 @@ log "$SOURCE_ROM_DIR"
 if [ ! -d "$SOURCE_DIR" ]; then
     error "Collection not found:"
     error "$SOURCE_DIR"
+
+    show_message \
+"OMG collection not found.\n\n\
+Requested collection:\n\
+${COLLECTION_NAME}\n\n\
+Expected location:\n\
+${SOURCE_DIR}\n\n\
+Please copy the '${COLLECTION_NAME}' collection into:\n\
+/EASYROMS/omg-collection\n\n\
+Then reboot the system."
+
     exit 1
 fi
 
