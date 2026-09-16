@@ -54,15 +54,20 @@ A collection is a folder containing the game files. You can create as many colle
 
 ### Install
 
+OMG works with both [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36) and [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S). The installation steps below apply to both.
+
 DISCLAIMER: THIS IS AN AMATEUR PROJECT. IT WORKS, BUT USE IT AT YOUR OWN RISK. INSTALL IT ON A FRESH DARKOS INSTALLATION. IT WILL NOT WORK ON AN EXISTING DARKOS SD CARD.
+
+> [!IMPORTANT]
+> **Copy OMG's `BOOT` files to the SD card BEFORE the very first boot of dArkOS.** After flashing the firmware, complete step 2 before switching on the console. If you have already booted dArkOS, reflash the SD card and start again. The `EASYROMS/omg-collection/` folder is copied later, at step 4.
 
 **ATTENTION PLEASE: The installation will configure your dArkOS to run only One Meaningful Game. Once the installation process has been completed, you will not be able to easily revert the installation.**
 
-1. [Download the latest release of dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases) and create an SD card for it [following the instructions](https://github.com/southoz/dArkOSRE-R36/wiki/Firmware-Installation).
+1. Download the latest release of [dArkOSRE-R36](https://github.com/southoz/dArkOSRE-R36/releases) or [dArkOSen-R36S](https://github.com/djparentx/dArkOSen-R36S/releases) and flash it to an SD card, following the installation instructions for your chosen firmware. **Do not boot the console yet.**
 
-2. Before running dArkOSRE for the first time, copy the contents of the `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `expandtoexfat.sh` file.
+2. **BEFORE the first boot of dArkOS**, copy the contents of OMG's `BOOT` folder to the `BOOT` partition of your SD card. You need to overwrite the `expandtoexfat.sh` file.
 
-3. Run dArkOSRE for the first time. It will install dArkOS and One Meaningful Game. It will reboot the console a couple of times then you should see this message or a frozen blank screen:
+3. Once OMG's `BOOT` files have been copied, boot dArkOS for the first time. It will install dArkOS and One Meaningful Game. It will reboot the console a couple of times then you should see this message or a frozen blank screen:
 
 ```text
    ============================================================
