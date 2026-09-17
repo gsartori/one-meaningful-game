@@ -102,6 +102,9 @@ to your chosen collection name, for example:
    * 24-bit RGB
    * Windows Bitmap (`.bmp`)
 
+> [!NOTE]
+> You can use GIMP to convert and export any image in this format.
+
    Save it as:
 
    ```text
@@ -167,7 +170,7 @@ to your chosen collection name, for example:
    └── retroarch-core-options.cfg
    ```
 
-   The `retroarch.cfg` and core options are therefore **collection-specific** and are not copied from the existing dArkOS RetroArch configuration.
+   The `retroarch.cfg` and core options are easily customizable with any text editor from any computer.
 
 ---
 
