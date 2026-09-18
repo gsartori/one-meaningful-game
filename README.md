@@ -10,9 +10,9 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ### This project is a gaming meditation.
 
-![cover.png](cover.png)
-
 [Download the Console Operations Instruction Sheet](console-operations.pdf)
+
+![cover.png](cover.png)
 
 </div>
 
