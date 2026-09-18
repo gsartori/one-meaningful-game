@@ -10,7 +10,7 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ### This project is a gaming meditation.
 
-![logo.png](EASYROMS/omg-collection/collection-name/logo.png)
+![console_wireframe_top_view.png](docs/console_wireframe_top_view.png)
 
 </div>
 
@@ -294,5 +294,3 @@ Your **One Meaningful Game** setup should now be ready.
 ## Have Fun :)
 
 **Play less. Play meaningfully.**
-
-![console_wireframe_top_view.png](docs/console_wireframe_top_view.png)
