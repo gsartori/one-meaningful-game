@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1706"
+   height="922"
+   viewBox="0 0 1706 922"
+   version="1.1"
+   id="svg13150"
+   sodipodi:docname="console_wireframe_top_view.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs13154">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2118-9">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke-width:4.99996;stroke-linecap:square;paint-order:stroke fill markers"
+         id="circle2120-7"
+         cx="84.666656"
+         cy="63.499996"
+         r="40.934284" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview13152"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.36198959"
+     inkscape:cx="708.58392"
+     inkscape:cy="419.90158"
+     inkscape:window-width="1512"
+     inkscape:window-height="846"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg13150" />
+  <title
+     id="title13064">Console handheld - wireframe 2D top view</title>
+  <desc
+     id="desc13066">Disegno vettoriale monocromatico della console, vista dall'alto, con soli contorni.</desc>
+  <g
+     id="g16890"
+     transform="translate(45.212501)" />
+  <g
+     id="g17753"
+     transform="translate(0,36.0572)">
+    <path
+       d="m 177,114 c -52,0 -94,40 -94,93 v 492 c 0,53 42,93 94,93 h 1352 c 52,0 94,-40 94,-93 V 207 c 0,-53 -42,-93 -94,-93 z"
+       id="path13070"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="M 166,101 C 107,101 62,146 62,205 v 505 c 0,58 45,103 104,103 h 1374 c 59,0 104,-45 104,-103 V 205 c 0,-59 -45,-104 -104,-104 z"
+       id="path13068"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="M 262,101 V 84 q 0,-10 10,-10 h 78 q 10,0 10,10 v 17"
+       id="path13072"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="M 1344,101 V 84 q 0,-10 10,-10 h 78 q 10,0 10,10 v 17"
+       id="path13074"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 1458,101 v -9 q 0,-5 8.8812,-5 h 71.05 q 8.8812,0 8.8812,5 v 9"
+       id="path13076"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 157.52545,101 v -9 q 0,-5 8.8812,-5 h 71.0496 q 8.8812,0 8.8812,5 v 9"
+       id="path13076-6"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    <rect
+       x="438"
+       y="170.5"
+       width="830"
+       height="565"
+       rx="36"
+       id="rect13078"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"
+       ry="36" />
+    <rect
+       x="449"
+       y="181.5"
+       width="808"
+       height="543"
+       rx="29"
+       id="rect13080"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"
+       ry="29" />
+    <g
+       id="g17595"
+       transform="translate(45.212501)">
+      <text
+         x="143"
+         y="198.72998"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="30px"
+         letter-spacing="1"
+         stroke="none"
+         fill="#000000"
+         id="text13082"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15805">SELECT</tspan></text>
+      <path
+         d="m 291,162 h 47 q 12,0 10,13 l -5,29 q -2,10 -12,10 h -27 q -10,0 -12,-10 l -5,-29 q -2,-13 4,-13 z"
+         id="path13084"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="g16896"
+       transform="translate(-3.983433)">
+      <path
+         d="m 1321,162 h 47 q 12,0 10,13 l -5,29 q -2,10 -12,10 h -27 q -10,0 -12,-10 l -5,-29 q -2,-13 4,-13 z"
+         id="path13086"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1400"
+         y="198.72998"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="30px"
+         letter-spacing="1"
+         stroke="none"
+         fill="#000000"
+         id="text13088"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15807">START</tspan></text>
+      <circle
+         cx="1530"
+         cy="188"
+         r="8"
+         id="circle13090"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="g16849"
+       transform="translate(18.5,20)">
+      <path
+         d="m 193,494 v 72 h -72 q -9,0 -9,9 v 68 q 0,9 9,9 h 72 v 72 q 0,9 9,9 h 67 q 9,0 9,-9 v -72 h 72 q 9,0 9,-9 v -68 q 0,-9 -9,-9 h -72 v -72 q 0,-9 -9,-9 h -67 q -9,0 -9,9 z"
+         id="path13102"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="235.5"
+         cy="609"
+         r="27"
+         id="circle13104"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="M 235.5,516 224,535 h 23 z"
+         id="path13106"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="M 235.5,702 224,683 h 23 z"
+         id="path13108"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="m 142,609 19,-11 v 23 z"
+         id="path13110"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="m 329,609 -19,-11 v 23 z"
+         id="path13112"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="g16885"
+       transform="translate(0,12)">
+      <circle
+         cx="1432"
+         cy="274"
+         r="47"
+         id="circle13114"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1432"
+         cy="274"
+         r="37"
+         id="circle13116"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1432"
+         y="291"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13118"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15793">X</tspan></text>
+      <circle
+         cx="1352"
+         cy="356"
+         r="47"
+         id="circle13120"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1352"
+         cy="356"
+         r="37"
+         id="circle13122"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1352"
+         y="373"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13124"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15795">Y</tspan></text>
+      <circle
+         cx="1512"
+         cy="356"
+         r="47"
+         id="circle13126"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1512"
+         cy="356"
+         r="37"
+         id="circle13128"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1512"
+         y="373"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13130"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15797">A</tspan></text>
+      <circle
+         cx="1432"
+         cy="438"
+         r="47"
+         id="circle13132"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1432"
+         cy="438"
+         r="37"
+         id="circle13134"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1432"
+         y="455"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13136"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15799">B</tspan></text>
+    </g>
+    <g
+       id="g16867"
+       transform="translate(0,9)">
+      <circle
+         cx="1432"
+         cy="620"
+         r="104"
+         id="circle13138"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1432"
+         cy="620"
+         r="82"
+         id="circle13140"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="1432"
+         cy="620"
+         r="70"
+         id="circle13142"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="m 1489,620 a 57,57 0 0 1 -57,57"
+         id="path13144"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="m 1432,677 a 57,57 0 0 1 -57,-57"
+         id="path13146"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="1431.3643"
+         y="634.8374"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13136-4"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15803">R3</tspan></text>
+    </g>
+    <g
+       id="g16858"
+       transform="translate(20,20)">
+      <circle
+         cx="234"
+         cy="348"
+         r="104"
+         id="circle13092"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="234"
+         cy="348"
+         r="82"
+         id="circle13094"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <circle
+         cx="234"
+         cy="348"
+         r="70"
+         id="circle13096"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="m 291,348 a 57,57 0 0 1 -57,57"
+         id="path13098"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="M 234,405 A 57,57 0 0 1 177,348"
+         id="path13100"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="233.29248"
+         y="362.8374"
+         text-anchor="middle"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42px"
+         stroke="none"
+         fill="#000000"
+         id="text13136-4-1"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15801">L3</tspan></text>
+    </g>
+    <g
+       id="g17511">
+      <text
+         x="734.77936"
+         y="109.18464"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="42.69px"
+         letter-spacing="1"
+         stroke="none"
+         fill="#000000"
+         id="text13088-9-7-8"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"
+         transform="scale(1.4230008,0.70274029)"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold';stroke-width:4.5"
+           id="tspan15453-3">-</tspan></text>
+      <text
+         x="1042.4349"
+         y="87.386017"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="32.9589px"
+         letter-spacing="1"
+         stroke="none"
+         fill="#000000"
+         id="text13088-9-7-0"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"
+         transform="scale(1.0986292,0.91022522)"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold';stroke-width:4.5"
+           id="tspan15453-5">+</tspan></text>
+      <path
+         d="M 1016.0031,101.00001 V 60.631677 q 0,-23.746077 8.4053,-23.746077 h 65.5621 q 8.4054,0 8.4054,23.746077 v 40.368333"
+         id="path13072-5-9"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="M 1114.627,101.00001 V 60.631677 q 0,-23.746077 8.4054,-23.746077 h 65.5622 q 8.4054,0 8.4054,23.746077 v 40.368333"
+         id="path13072-5-3-2"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="g17503"
+       transform="translate(11)">
+      <path
+         d="M 498,101.00001 V 60.631677 Q 498,36.8856 506.40539,36.8856 h 65.56209 q 8.40541,0 8.40541,23.746077 v 40.368333"
+         id="path13072-5"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         d="M 596.62393,101.00001 V 60.631677 q 0,-23.746077 8.40541,-23.746077 h 65.56218 q 8.40541,0 8.40541,23.746077 v 40.368333"
+         id="path13072-5-3"
+         style="fill:none;stroke:#000000;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="625.95984"
+         y="79.680107"
+         font-family="Arial, Helvetica, sans-serif"
+         font-size="30px"
+         letter-spacing="1"
+         stroke="none"
+         fill="#000000"
+         id="text13088-9-7"
+         style="stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial, Helvetica, sans-serif;-inkscape-font-specification:'Arial, Helvetica, sans-serif Bold'"
+           id="tspan15453">R</tspan></text>
+      <g
+         id="g17300"
+         transform="translate(9.2786081,2.9687058)">
+        <circle
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           id="path15730"
+           cx="529.90784"
+           cy="68.942802"
+           r="12.45286" />
+        <rect
+           style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           id="rect16085"
+           width="4.2833686"
+           height="18.880957"
+           x="527.76617"
+           y="51.552536" />
+      </g>
+    </g>
+  </g>
+</svg>

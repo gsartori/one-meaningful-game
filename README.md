@@ -294,3 +294,5 @@ Your **One Meaningful Game** setup should now be ready.
 ## Have Fun :)
 
 **Play less. Play meaningfully.**
+
+![console_wireframe_top_view.png](docs/console_wireframe_top_view.png)
