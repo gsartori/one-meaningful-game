@@ -10,7 +10,7 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ### This project is a gaming meditation.
 
-![console_wireframe_top_view.png](docs/console_wireframe_top_view.png)
+![cover.png](cover.png)
 
 </div>
 
