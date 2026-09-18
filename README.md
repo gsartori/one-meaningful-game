@@ -12,6 +12,8 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ![cover.png](cover.png)
 
+[Download the Console Operations Instruction Sheet](console-operations.pdf)
+
 </div>
 
 ## How it works
