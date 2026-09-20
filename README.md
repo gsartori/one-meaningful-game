@@ -102,14 +102,11 @@ Only one collection can be installed at a time, but you can create as many colle
 
 6. **Optional:** add a collection cover for the boot screen.
 
-   Use a:
+   Use GIMP to convert and export any image in this format:
 
    * 640×480 image
    * 24-bit RGB
    * Windows Bitmap (`.bmp`)
-
-   > [!NOTE]
-   > You can use GIMP to convert and export any image in this format.
 
    Save it as:
 
