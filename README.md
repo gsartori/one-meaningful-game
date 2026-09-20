@@ -47,7 +47,7 @@ Only one collection can be installed at a time, but you can create as many colle
    EASYROMS/omg-collection/collection-name
    ```
 
-to your chosen collection name, for example:
+   to your chosen collection name, for example:
 
    ```text
    EASYROMS/omg-collection/my-collection
@@ -78,6 +78,7 @@ to your chosen collection name, for example:
 
    For compatibility with older collections, `mame2003` also selects `mame2003_plus_libretro.so`.
 
+
 4. Edit:
 
    ```text
@@ -98,6 +99,7 @@ to your chosen collection name, for example:
 
    The core is determined by the folder containing `random`, so side games can use different cores from the main game.
 
+
 6. **Optional:** add a collection cover for the boot screen.
 
    Use a:
@@ -106,8 +108,8 @@ to your chosen collection name, for example:
    * 24-bit RGB
    * Windows Bitmap (`.bmp`)
 
-> [!NOTE]
-> You can use GIMP to convert and export any image in this format.
+   > [!NOTE]
+   > You can use GIMP to convert and export any image in this format.
 
    Save it as:
 
@@ -115,39 +117,13 @@ to your chosen collection name, for example:
    EASYROMS/omg-collection/my-collection/logo.bmp
    ```
 
-   The file is installed as:
-
-   ```text
-   /boot/logo.bmp
-   ```
-
 7. **Optional:** add a custom low-battery image.
-
-   Use a:
-
-   * 640×480 image
-   * 24-bit RGB
-   * Windows Bitmap (`.bmp`)
 
    Save it as:
 
    ```text
    EASYROMS/omg-collection/my-collection/low_battery.bmp
    ```
-
-   If present, the image is installed as:
-
-   ```text
-   /boot/low_battery.bmp
-   ```
-
-   The original dArkOS image is backed up as:
-
-   ```text
-   /boot/low_battery-backup.bmp
-   ```
-
-   If `low_battery.bmp` is not included in the collection, the existing system image is left unchanged.
 
 8. **RetroArch configuration:**
 
@@ -187,22 +163,12 @@ OMG works with:
 
 The installation procedure is the same for both.
 
-> [!WARNING]
-> **OMG is an amateur project. Use it at your own risk.**
->
-> Install it on a **fresh dArkOS installation only**. It is not intended to be installed on an existing dArkOS SD card.
-
 > [!IMPORTANT]
-> **OMG's `BOOT` files must be copied to the SD card BEFORE the first dArkOS boot.**
->
-> If dArkOS has already been booted, reflash the SD card and start again.
+> **OMG's `BOOT` files must be copied to the SD card BEFORE the first dArkOS boot. If dArkOS has already been booted, reflash the SD card and start again.**
 >
 > The `EASYROMS/omg-collection/` folder is copied later during the installation.
-
-> [!WARNING]
-> **OMG changes dArkOS to run as a One Meaningful Game console.**
 >
-> Once installation is complete, reverting to the standard dArkOS setup is not straightforward.
+> OMG changes dArkOS to run as a One Meaningful Game console. Once installation is complete, reverting to the standard dArkOS setup is not straightforward.
 
 ### 1. Flash dArkOS
 
