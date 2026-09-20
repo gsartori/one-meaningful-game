@@ -104,9 +104,9 @@ Only one collection can be installed at a time, but you can create as many colle
 
    Use GIMP to convert and export any image in this format:
 
+   * Windows Bitmap (`.bmp`)
    * 640×480 image
    * 24-bit RGB
-   * Windows Bitmap (`.bmp`)
 
    Save it as:
 
