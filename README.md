@@ -1,6 +1,6 @@
 # One Meaningful Game
 
-### Turn Your R36S/R36H Into a Dedicated Single-Game Console
+### Turn Your R36H Into a Dedicated Single-Game Console
 
 One Meaningful Game (OMG) is a custom setup for dArkOS that turns your R36S/R36H into a console focused on **one main game**.
 
@@ -10,7 +10,7 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ### This project is a gaming meditation.
 
-[Download the Console Operations Instruction Sheet](console-operations.pdf)
+[Download the Console Operations Instruction Sheet](docs/OMG%20Console%20Operations.pdf)
 
 ![cover.png](cover.png)
 
