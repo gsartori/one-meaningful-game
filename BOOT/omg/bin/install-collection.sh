@@ -339,7 +339,7 @@ log "$CONFIG_DIR"
 # IMPORTANT:
 # This must be the last operation before reboot.
 #
-# run.sh uses this file to know whether OMG has been installed.
+# start.sh uses this file to know whether OMG has been installed.
 #
 # If installation fails before this point, the flag does not
 # exist and installation will be attempted again on next boot.

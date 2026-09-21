@@ -146,6 +146,7 @@ if [ -f "$PAUSE_SCRIPT" ]; then
 
     if ! cat << 'EOF' > "$PAUSE_SCRIPT"
 #!/bin/bash
+systemctl stop omg
 sync
 systemctl poweroff
 EOF

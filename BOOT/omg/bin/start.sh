@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # ============================================================
-# OMG Runtime Script
+# OMG Start Script
 # ============================================================
 set -u
 
@@ -70,7 +70,7 @@ load_omg_config || exit 1
 # Init logging
 # ------------------------------------------------------------
 source "${OMG_DIR}/bin/logging.sh"
-init_logging "RUN"
+init_logging "START"
 
 # ------------------------------------------------------------
 # Timing
@@ -285,7 +285,7 @@ select_random_rotation_rom()
 # ------------------------------------------------------------
 log ""
 log "============================================================"
-log "OMG RUN STARTED"
+log "OMG STARTED"
 log "============================================================"
 
 log "PID: $$"
@@ -515,38 +515,60 @@ log "============================================================"
 # ------------------------------------------------------------
 # RetroArch environment
 # ------------------------------------------------------------
-log "Saving RetroArch environment."
-
-HOME=/home/ark \
-USER=root \
-LOGNAME=root \
-TERM=linux
-
 log "Launching RetroArch."
 
+export HOME=/home/ark
+export USER=root
+export LOGNAME=root
+export TERM=linux
+
 if [ "$LOG_ENABLED" = "true" ]; then
-    HOME=/home/ark \
-    USER=root \
-    LOGNAME=root \
-    TERM=linux \
-    "$RETROARCH" \
+    exec "$RETROARCH" \
         --verbose \
         -c "$RETROARCH_CONFIG" \
         -L "$CORE" \
         "$ROM" \
-        >> "$LOG_FILE" 2>&1
+        >> "$LOG_FILE" 2>&1 &
 else
-    HOME=/home/ark \
-    USER=root \
-    LOGNAME=root \
-    TERM=linux \
-    "$RETROARCH" \
+    exec "$RETROARCH" \
         -c "$RETROARCH_CONFIG" \
         -L "$CORE" \
         "$ROM" \
-        > /dev/null 2>&1
+        > /dev/null 2>&1 &
 fi
 
+RETROARCH_PID=$!
+
+log "RetroArch PID: $RETROARCH_PID"
+log "Waiting for RetroArch to initialize..."
+sleep 2
+
+log "Checking listening UDP sockets."
+
+SS_OUTPUT=$(
+    ss -lnup 2>&1 || true
+)
+
+while IFS= read -r LINE; do
+    log "ss: $LINE"
+done <<< "$SS_OUTPUT"
+
+log "Checking UDP port 55355 specifically."
+
+PORT_OUTPUT=$(ss -lnup 2>&1 | grep ':55355' || true)
+
+if [ -n "$PORT_OUTPUT" ]; then
+    log "UDP port 55355 LISTENING:"
+    while IFS= read -r LINE; do
+        log "port: $LINE"
+    done <<< "$PORT_OUTPUT"
+else
+    log "UDP port 55355 is NOT LISTENING."
+fi
+
+log "Waiting for RetroArch."
+
+wait "$RETROARCH_PID"
 RETROARCH_EXIT=$?
 
 # ------------------------------------------------------------

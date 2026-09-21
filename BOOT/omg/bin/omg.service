@@ -20,7 +20,9 @@ After=local-fs.target
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/bash /boot/omg/bin/run.sh
+ExecStart=/bin/bash /boot/omg/bin/start.sh
+ExecStop=/bin/bash /boot/omg/bin/stop.sh
+TimeoutStopSec=3s
 Restart=no
 
 StandardInput=tty
