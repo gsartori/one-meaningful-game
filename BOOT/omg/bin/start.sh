@@ -523,57 +523,22 @@ export LOGNAME=root
 export TERM=linux
 
 if [ "$LOG_ENABLED" = "true" ]; then
-    exec "$RETROARCH" \
+    "$RETROARCH" \
         --verbose \
         -c "$RETROARCH_CONFIG" \
         -L "$CORE" \
         "$ROM" \
-        >> "$LOG_FILE" 2>&1 &
+        >> "$LOG_FILE" 2>&1
 else
-    exec "$RETROARCH" \
+    "$RETROARCH" \
         -c "$RETROARCH_CONFIG" \
         -L "$CORE" \
         "$ROM" \
-        > /dev/null 2>&1 &
+        > /dev/null 2>&1
 fi
 
-RETROARCH_PID=$!
-
-log "RetroArch PID: $RETROARCH_PID"
-log "Waiting for RetroArch to initialize..."
-sleep 2
-
-log "Checking listening UDP sockets."
-
-SS_OUTPUT=$(
-    ss -lnup 2>&1 || true
-)
-
-while IFS= read -r LINE; do
-    log "ss: $LINE"
-done <<< "$SS_OUTPUT"
-
-log "Checking UDP port 55355 specifically."
-
-PORT_OUTPUT=$(ss -lnup 2>&1 | grep ':55355' || true)
-
-if [ -n "$PORT_OUTPUT" ]; then
-    log "UDP port 55355 LISTENING:"
-    while IFS= read -r LINE; do
-        log "port: $LINE"
-    done <<< "$PORT_OUTPUT"
-else
-    log "UDP port 55355 is NOT LISTENING."
-fi
-
-log "Waiting for RetroArch."
-
-wait "$RETROARCH_PID"
 RETROARCH_EXIT=$?
 
-# ------------------------------------------------------------
-# RetroArch exit
-# ------------------------------------------------------------
 log "============================================================"
 log "RetroArch exited."
 log "============================================================"
