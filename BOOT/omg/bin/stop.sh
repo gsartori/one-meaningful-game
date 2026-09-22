@@ -122,8 +122,12 @@ send_retroarch_command()
 # ------------------------------------------------------------
 log "Stopping RetroArch."
 
-send_retroarch_command "SAVE_FILES"
-send_retroarch_command "CLOSE_CONTENT"
+if [ "${OMG_CONFIG_VALUES[save_hiscore_on_power_off]:-false}" = "true" ]; then
+  log "Saving retroarch HISCORE."
+    send_retroarch_command "SAVE_FILES"
+    send_retroarch_command "CLOSE_CONTENT"
+fi
+
 send_retroarch_command "QUIT"
 
 # ------------------------------------------------------------
