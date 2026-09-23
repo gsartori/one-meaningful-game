@@ -70,7 +70,7 @@ Only one collection can be installed at a time, but you can create as many colle
    | `roms/fbneo/`         | `fbneo_libretro.so`         |
    | `roms/mame2003_plus/` | `mame2003_plus_libretro.so` |
 
-   Any installed RetroArch core can be used without changing the scripts.
+   Any installed RetroArch core can be used without changing the scripts. See here for a list of available cores: https://buildbot.libretro.com/nightly/linux/x86_64/latest/
 
    The launcher currently supports `.zip` and `.ZIP` files, so the main game must be playable from a ZIP archive using the selected core.
 
