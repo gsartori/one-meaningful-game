@@ -91,6 +91,8 @@ Only one collection can be installed at a time, but you can create as many colle
    install_collection=my-collection
    ```
 
+   ROM selection is ascending by default. Set `rom_selection_sort_ascending=false` in `omg.cfg` to select ROMs in descending alphabetical order.
+
 5. **Optional:** add side games to:
 
    ```text

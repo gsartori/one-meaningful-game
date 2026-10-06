@@ -67,6 +67,18 @@ source "${OMG_DIR}/bin/config.sh"
 load_omg_config || exit 1
 
 # ------------------------------------------------------------
+# Sort ROMs using the configured selection order
+# ------------------------------------------------------------
+sort_roms()
+{
+    if [ "${OMG_CONFIG_VALUES[rom_selection_sort_ascending]:-true}" = "false" ]; then
+        sort -fr
+    else
+        sort -f
+    fi
+}
+
+# ------------------------------------------------------------
 # Init logging
 # ------------------------------------------------------------
 source "${OMG_DIR}/bin/logging.sh"
@@ -126,6 +138,11 @@ is_valid_rom()
 
     BASENAME=$(basename "$FILE")
 
+    # Neo Geo BIOS archives must not be selected as games.
+    if [ "${BASENAME,,}" = "neogeo.zip" ]; then
+        return 1
+    fi
+
     # Only ZIP files are valid ROMs.
     case "$BASENAME" in
         *.zip|*.ZIP)
@@ -146,7 +163,7 @@ is_valid_rom()
 }
 
 # ------------------------------------------------------------
-# Find first alphabetical ROM
+# Find first ROM in the configured alphabetical order
 # ------------------------------------------------------------
 find_first_rom()
 {
@@ -165,7 +182,7 @@ find_first_rom()
             -not -path "$ROM_ROOT/.*/*" \
             -type f \
             -print 2>/dev/null |
-        sort -f
+        sort_roms
     )
 
     return 1
@@ -205,7 +222,7 @@ build_random_list()
                 -maxdepth 1 \
                 -type f \
                 -print 2>/dev/null |
-            sort -f
+            sort_roms
         )
 
     done
@@ -426,11 +443,11 @@ if [ $((BOOT_COUNT % 2)) -eq 0 ]; then
 
     if ! select_random_rotation_rom; then
         log "Random rotation unavailable."
-        log "Falling back to first alphabetical ROM."
+        log "Falling back to first ROM in configured sort order."
         ROM=$(find_first_rom)
     fi
 else
-    log "Normal boot - selecting first ROM alphabetically."
+    log "Normal boot - selecting first ROM in configured sort order."
     ROM=$(find_first_rom)
 fi
 
