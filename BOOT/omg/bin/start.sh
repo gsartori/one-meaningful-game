@@ -388,19 +388,23 @@ fi
 # ------------------------------------------------------------
 # Setting max performance
 # ------------------------------------------------------------
-log "Setting CPU governor to max performance."
+if [ "${OMG_CONFIG_VALUES[enable_cpu_max_performance]:-false}" = "true" ]; then
+    log "Setting CPU governor to max performance."
 
-for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-    if [ -w "$f" ]; then
-        if echo performance > "$f" 2>/dev/null; then
-            log "Governor set to performance:"
-            log "$f"
-        else
-            log "Unable to set governor:"
-            log "$f"
+    for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+        if [ -w "$f" ]; then
+            if echo performance > "$f" 2>/dev/null; then
+                log "Governor set to performance:"
+                log "$f"
+            else
+                log "Unable to set governor:"
+                log "$f"
+            fi
         fi
-    fi
-done
+    done
+else
+    log "CPU max performance is disabled in omg.cfg."
+fi
 
 # ------------------------------------------------------------
 # Boot counter
