@@ -12,7 +12,7 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 [Download the Console Operations Instruction Sheet](docs/OMG%20Console%20Operations.pdf)
 
-[Download the original One Meaningful Game Collection](docs/OMG Collection/One%20Meaningful%20Game%20Collection.pdf)
+[Download the original One Meaningful Game Collection](docs/OMG%20Collection/One%20Meaningful%20Game%20Collection.pdf)
 
 [Join the discussion on Facebook](https://www.facebook.com/groups/one.meaningful.game)
 
