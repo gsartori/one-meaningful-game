@@ -46,14 +46,10 @@ Only one collection can be installed at a time, but you can create as many colle
 2. Rename:
 
    ```text
-   EASYROMS/omg-collection/collection-name
-   ```
-
-   to your chosen collection name, for example:
-
-   ```text
    EASYROMS/omg-collection/my-collection
    ```
+
+   to your chosen collection name.
 
 3. Put your main game inside:
 
