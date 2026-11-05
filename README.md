@@ -93,11 +93,13 @@ Only one collection can be installed at a time, but you can create as many colle
 
    `omg.cfg` also contains these options:
 
-   * `install_collection`: name of the collection to install from `EASYROMS/omg-collection/<name>`.
-   * `save_hiscore_on_power_off`: when `true`, asks RetroArch to save its files and close the current game before quitting during shutdown. Default: `true`.
-   * `rom_selection_sort_ascending`: when `true`, selects ROMs in ascending alphabetical order; set it to `false` for descending order. Default: `true`.
-   * `enable_cpu_max_performance`: when `true`, sets available CPU frequency governors to `performance` at startup. Default: `false`.
-   * `enable_logging`: when `true`, writes OMG activity and error messages to `BOOT/omg/logs/omg.log`. Default: `false`.
+   | Option | Description | Default |
+   | --- | --- | --- |
+   | `install_collection` | Name of the collection to install from `EASYROMS/omg-collection/<name>`. | — (required) |
+   | `save_hiscore_on_power_off` | When `true`, asks RetroArch to save its files and close the current game before quitting during shutdown. | `true` |
+   | `rom_selection_sort_ascending` | When `true`, selects ROMs in ascending alphabetical order; set it to `false` for descending order. | `true` |
+   | `enable_cpu_max_performance` | When `true`, sets available CPU frequency governors to `performance` at startup. | `false` |
+   | `enable_logging` | When `true`, writes OMG activity and error messages to `BOOT/omg/logs/omg.log`. | `false` |
 
    Boolean options use lowercase `true` or `false`.
 
