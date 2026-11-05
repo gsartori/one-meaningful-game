@@ -65,10 +65,10 @@ Only one collection can be installed at a time, but you can create as many colle
 
    | ROM folder            | RetroArch core              |
       | --------------------- | --------------------------- |
-   | `roms/snes9x/`        | `snes9x_libretro.so`        |
-   | `roms/gambatte/`      | `gambatte_libretro.so`      |
    | `roms/fbneo/`         | `fbneo_libretro.so`         |
    | `roms/mame2003_plus/` | `mame2003_plus_libretro.so` |
+   | `roms/snes9x/`        | `snes9x_libretro.so`        |
+   | `roms/gambatte/`      | `gambatte_libretro.so`      |
 
    Any installed RetroArch core can be used without changing the scripts. See here for a list of available cores: https://buildbot.libretro.com/nightly/linux/x86_64/latest/
 
@@ -91,7 +91,15 @@ Only one collection can be installed at a time, but you can create as many colle
    install_collection=my-collection
    ```
 
-   ROM selection is ascending by default. Set `rom_selection_sort_ascending=false` in `omg.cfg` to select ROMs in descending alphabetical order.
+   `omg.cfg` also contains these options:
+
+   * `install_collection`: name of the collection to install from `EASYROMS/omg-collection/<name>`.
+   * `save_hiscore_on_power_off`: when `true`, asks RetroArch to save its files and close the current game before quitting during shutdown. Default: `true`.
+   * `rom_selection_sort_ascending`: when `true`, selects ROMs in ascending alphabetical order; set it to `false` for descending order. Default: `true`.
+   * `enable_cpu_max_performance`: when `true`, sets available CPU frequency governors to `performance` at startup. Default: `false`.
+   * `enable_logging`: when `true`, writes OMG activity and error messages to `BOOT/omg/logs/omg.log`. Default: `false`.
+
+   Boolean options use lowercase `true` or `false`.
 
 5. **Optional:** add side games to:
 
@@ -123,33 +131,6 @@ Only one collection can be installed at a time, but you can create as many colle
    ```text
    EASYROMS/omg-collection/my-collection/low_battery.bmp
    ```
-
-8. **RetroArch configuration:**
-
-   The collection configuration is stored in:
-
-   ```text
-   BOOT/omg/config/
-   ```
-
-   Everything inside this directory is copied to:
-
-   ```text
-   /roms/omg/config/
-   ```
-
-   This includes the RetroArch configuration and core options.
-
-   For example:
-
-   ```text
-   BOOT/omg/config/
-   ├── omg.cfg
-   ├── retroarch.cfg
-   └── retroarch-core-options.cfg
-   ```
-
-   The `retroarch.cfg` and core options are easily customizable with any text editor from any computer.
 
 ---
 
