@@ -10,7 +10,7 @@ The idea is simple: instead of constantly browsing a huge library, you choose on
 
 ### This project is a gaming meditation.
 
-[Download the original One Meaningful Game Collection Book](docs/OMG%20Collection/One%20Meaningful%20Game%20Collection.pdf)
+[Download the original One Meaningful Game Collection Book](docs/OMG%20Collection/OMG%20Collection%20Book.pdf)
 
 [Download the Console Operations Instruction Sheet](docs/OMG%20Console%20Operations.pdf)
 
